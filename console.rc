@@ -1,0 +1,396 @@
+/*
+  console.rc - Help and version resources for CONSOLE.DLL.
+
+  Jason Hood, 20 October, 2009.
+
+  Originally I had one big help screen, but the dialog is limited to 4095
+  characters, so now it's split into several.
+*/
+
+#include <windows.h>
+#include "resources.h"
+
+STRINGTABLE
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+{
+  0, "Console Commands"
+  1, "Game Commands"
+  2, "Base Commands"
+  3, "Movement Commands"
+  4, "Ship Commands"
+  5, "HUD Commands"
+  6, "Player Commands"
+
+IDS_VERSION,		"Version 1.24 (7 May, 2016)."
+IDS_GAME_SAVED+0,	"Game NOT saved."
+IDS_GAME_SAVED+1,	"Game saved."
+IDS_QUICK_SAVE, 	"Quick Save%s"
+IDS_GAME_NOT_FOUND,	"Game not found."
+IDS_OBJECT_NOT_FOUND,	"Object not found."
+IDS_CRUISESPD,		"Cruise speed = %g m/s"
+IDS_CRUISEACC,		"Cruise accel time = %gs"
+IDS_ANIMATION_NOT_FOUND, "Animation not found."
+IDS_BASE_NOT_FOUND,	"Base not found."
+IDS_SYSTEM_NOT_FOUND,	"System not found."
+IDS_SHIPS,		"Ships"
+IDS_SHIP_NOT_FOUND,	"Ship not found."
+IDS_NO_SHIPS_HERE,	"No ships here."
+IDS_REPAIR_DAMAGE,	"Repair damage."
+IDS_PARKED,		"Parked %s."
+IDS_DRIVE_A_SHIP,	"Drive a ship."
+IDS_SOLD_FOR,		"Sold %s for %s."
+IDS_SPECIFY_BASE,	"Specify base."
+IDS_GHOST_OFF,		"Ghost: off"
+IDS_GHOST_ON,		"Ghost: on"
+IDS_GODMODE_OFF,	"Godmode: off"
+IDS_GODMODE_ON, 	"Godmode: on"
+IDS_NTB_OFF,		"NTB: off"
+IDS_NTB_ON+0,		"NTB: on"
+IDS_NTB_ON+1,		"NTB: sight"
+IDS_SHOW_ON,		"Show: on"
+IDS_SHOW_OFF,		"Show: off"
+IDS_HOUSES_OFF, 	"House labels: off"
+IDS_HOUSES_ON,		"House labels: on"
+IDS_PPATHS_UNFILTERED,	"Patrol Paths: unfiltered"
+IDS_PPATHS_FILTERED,	"Patrol Paths: filtered"
+IDS_ZOOM_TIME,		"Zoom time = %g"
+IDS_FACTION_NOT_FOUND,	"Faction not found."
+IDS_REP,		"Reputation: %g"
+IDS_REP_SAVED,		"Rep saved."
+IDS_REP_LOADED, 	"Rep loaded."
+IDS_MONKEY,		"Monkey."
+IDS_ROBOT,		"Robot."
+IDS_TRENT,		"Trent."
+IDS_COSTUME_NOT_FOUND,	"Costume not found."
+
+IDS_TRANSFER,		"Item Transfer"
+IDS_TRANSFER+1, 	"If you want to transfer an item, select it in a list. \
+			 Set the quantity that you want to transfer and click \
+			 the Transfer button."
+
+IDS_NO_CLIP,		"Clipboard unavailable."
+IDS_COPIED,		"Position copied."
+IDS_BOOKMARKS,		"Bookmarks"
+IDS_BOOKMARK_SET,	"Bookmark set."
+IDS_BOOKMARK_NOT_SET,	"Bookmark not set."
+
+IDS_SOUND_NOT_FOUND,	"Sound not found."
+}
+
+
+1000 23
+{
+L"\xfeff<RDL><PUSH/>\
+<TRA bold=""true""/><TEXT>GAME</TEXT><TRA bold=""false""/><TEXT>: </TEXT>\
+<POS h=""20"" relH=""true""/>\
+<TRA bold=""true""/><TEXT>a</TEXT><TRA bold=""false""/><TEXT>uto</TEXT>\
+<TRA bold=""true""/><TEXT>s</TEXT><TRA bold=""false""/><TEXT>ave, </TEXT>\
+<TRA bold=""true""/><TEXT>a</TEXT><TRA bold=""false""/><TEXT>uto</TEXT>\
+<TRA bold=""true""/><TEXT>l</TEXT>\<TRA bold=""false""/><TEXT>oad, </TEXT>\
+<TRA bold=""true""/><TEXT>sa</TEXT><TRA bold=""false""/><TEXT>ve, </TEXT>\
+<TRA bold=""true""/><TEXT>lo</TEXT><TRA bold=""false""/><TEXT>ad, </TEXT>\
+<TRA bold=""true""/><TEXT>pl</TEXT><TRA bold=""false""/><TEXT>ay</TEXT>\
+<PARA/>\
+<TRA bold=""true""/><TEXT>BASE</TEXT><TRA bold=""false""/><TEXT>: </TEXT>\
+<POS h=""23"" relH=""true""/>\
+<TRA bold=""true""/><TEXT>l</TEXT><TRA bold=""false""/><TEXT>aunch, </TEXT>\
+<TRA bold=""true""/><TEXT>pa</TEXT><TRA bold=""false""/><TEXT>rk, </TEXT>\
+<TRA bold=""true""/><TEXT>d</TEXT><TRA bold=""false""/><TEXT>rive, </TEXT>\
+<TRA bold=""true""/><TEXT>x</TEXT><TRA bold=""false""/><TEXT>fer, </TEXT>\
+<TRA bold=""true""/><TEXT>se</TEXT><TRA bold=""false""/><TEXT>ll, </TEXT>\
+<TRA bold=""true""/><TEXT>hi</TEXT><TRA bold=""false""/><TEXT>tch</TEXT>\
+<PARA/>\
+<TRA bold=""true""/><TEXT>MOVE</TEXT><TRA bold=""false""/><TEXT>: </TEXT>\
+<POS h=""23"" relH=""true""/>\
+<TRA bold=""true""/><TEXT>j</TEXT><TRA bold=""false""/><TEXT>ump, </TEXT>\
+<TRA bold=""true""/><TEXT>pos[r]</TEXT><TRA bold=""false""/><TEXT>, </TEXT>\
+<TRA bold=""true""/><TEXT>rot[r]</TEXT><TRA bold=""false""/><TEXT>, </TEXT>\
+<TRA bold=""true""/><TEXT>b</TEXT><TRA bold=""false""/><TEXT>ase, </TEXT>\
+<TRA bold=""true""/><TEXT>s</TEXT><TRA bold=""false""/><TEXT>ystem</TEXT>\
+<PARA/>\
+<TRA bold=""true""/><TEXT>SHIP</TEXT><TRA bold=""false""/><TEXT>: </TEXT>\
+<POS h=""28"" relH=""true""/>\
+<TRA bold=""true""/><TEXT>cs</TEXT><TRA bold=""false""/><TEXT>pd, </TEXT>\
+<TRA bold=""true""/><TEXT>cac</TEXT><TRA bold=""false""/><TEXT>c, </TEXT>\
+<TRA bold=""true""/><TEXT>an</TEXT><TRA bold=""false""/><TEXT>im, </TEXT>\
+<TRA bold=""true""/><TEXT>gh</TEXT><TRA bold=""false""/><TEXT>ost, </TEXT>\
+<TRA bold=""true""/><TEXT>go</TEXT><TRA bold=""false""/><TEXT>dmode</TEXT>\
+<PARA/>\
+<TRA bold=""true""/><TEXT>HUD</TEXT><TRA bold=""false""/><TEXT>: </TEXT>\
+<POS h=""32"" relH=""true""/>\
+<TRA bold=""true""/><TEXT>n</TEXT><TRA bold=""false""/><TEXT>tb, </TEXT>\
+<TRA bold=""true""/><TEXT>sho</TEXT><TRA bold=""false""/><TEXT>w, </TEXT>\
+<TRA bold=""true""/><TEXT>z</TEXT><TRA bold=""false""/><TEXT>oom</TEXT>\
+<PARA/>\
+<TRA bold=""true""/><TEXT>PLAYER</TEXT><TRA bold=""false""/><TEXT>: </TEXT>\
+<TRA bold=""true""/><TEXT>cas</TEXT><TRA bold=""false""/><TEXT>h, </TEXT>\
+<TRA bold=""true""/><TEXT>re</TEXT><TRA bold=""false""/><TEXT>p, </TEXT>\
+<TRA bold=""true""/><TEXT>shi</TEXT><TRA bold=""false""/><TEXT>ps, </TEXT>\
+<TRA bold=""true""/><TEXT>m</TEXT><TRA bold=""false""/><TEXT>onkey, </TEXT>\
+<TRA bold=""true""/><TEXT>rob</TEXT><TRA bold=""false""/><TEXT>ot, </TEXT>\
+<TRA bold=""true""/><TEXT>t</TEXT><TRA bold=""false""/><TEXT>rent, </TEXT>\
+<TRA bold=""true""/><TEXT>co</TEXT><TRA bold=""false""/><TEXT>stume</TEXT>\
+<PARA/>\
+<PARA/>\
+<TEXT>Enter </TEXT><TRA bold=""true""/><TEXT>help </TEXT><TRA italic=""true""/>\
+<TEXT>topic</TEXT><TRA italic=""false"" bold=""false""/><TEXT>  for further \
+help.</TEXT><PARA/>\
+<PARA/>\
+<TEXT>Commands (and their options) can be abbreviated to a unique prefix. \
+Case is ignored, unless otherwise stated. Commands that search for names will \
+stop at the first match found; append </TEXT><TRA bold=""true""/><TEXT>*</TEXT>\
+<TRA bold=""false""/><TEXT>, </TEXT><TRA bold=""true""/><TEXT>**</TEXT>\
+<TRA bold=""false""/><TEXT> or </TEXT><TRA bold=""true""/><TEXT>*</TEXT>\
+<TRA italic=""true""/><TEXT>N</TEXT><TRA bold=""false"" italic=""false""/>\
+<TEXT>	to stop at the second, third or </TEXT><TRA italic=""true""/><TEXT>N \
+</TEXT><TRA italic=""false""/><TEXT>th match.</TEXT>\
+<POP/></RDL>"
+}
+
+1001 23
+{
+L"\xfeff<RDL><PUSH/>\
+<TRA bold=""true""/><TEXT>autosave</TEXT><TRA bold=""false""/>\
+<POS h=""81"" relH=""true""/><TEXT>save the Auto Save game</TEXT><PARA/>\
+<TRA bold=""true""/><TEXT>autoload</TEXT><TRA bold=""false""/>\
+<POS h=""85"" relH=""true""/><TEXT>load the Auto Save game</TEXT><PARA/>\
+<TRA bold=""true""/><TEXT>save [</TEXT><TRA italic=""true""/><TEXT>slot </TEXT>\
+<TRA italic=""false""/><TEXT>|</TEXT><TRA italic=""true""/><TEXT>desc </TEXT>\
+<TRA italic=""false""/><TEXT>]</TEXT><TRA bold=""false""/>\
+<POS h=""20"" relH=""true""/><TEXT>save the game</TEXT><PARA/>\
+<TRA bold=""true""/><TEXT>load [</TEXT><TRA italic=""true""/><TEXT>slot </TEXT>\
+<TRA italic=""false""/><TEXT>|</TEXT><TRA italic=""true""/><TEXT>desc </TEXT>\
+<TRA italic=""false""/><TEXT>]</TEXT><TRA bold=""false""/>\
+<POS h=""24"" relH=""true""/><TEXT>load a game</TEXT><PARA/>\
+<TRA bold=""true""/><TEXT>play </TEXT><TRA italic=""true""/><TEXT>sound </TEXT>\
+<TRA italic=""false"" bold=""false""/>\
+<POS h=""62"" relH=""true""/><TEXT>play a sound effect</TEXT><PARA/>\
+<PARA/>\
+<TEXT>Only </TEXT><TRA bold=""true""/><TEXT>save</TEXT><TRA bold=""false""/>\
+<TEXT>d games can be </TEXT><TRA bold=""true""/><TEXT>load</TEXT>\
+<TRA bold=""false""/><TEXT>ed. Slot is a single character and will be listed \
+as ""Quick Save </TEXT><TRA italic=""true""/><TEXT>slot</TEXT>\
+<TRA italic=""false""/><TEXT> ""; it is converted to upper case and appended \
+to the file name, so not all characters are available. Described games will be \
+listed with a leading space. Games are automatically overwritten.</TEXT>\
+<POP/></RDL>"
+}
+
+1002 23
+{
+L"\xfeff<RDL><PUSH/>\
+<TRA bold=""true""/><TEXT>launch</TEXT><TRA bold=""false""/>\
+<POS h=""62"" relH=""true""/><TEXT>enter space</TEXT><PARA/>\
+<TRA bold=""true""/><TEXT>park</TEXT><TRA bold=""false""/>\
+<POS h=""82"" relH=""true""/><TEXT>place the ship in storage</TEXT><PARA/>\
+<TRA bold=""true""/><TEXT>drive [</TEXT><TRA italic=""true""/><TEXT>ship </TEXT>\
+<TRA italic=""false""/><TEXT>]</TEXT><TRA bold=""false""/>\
+<POS h=""25"" relH=""true""/><TEXT>get a ship out of storage</TEXT><PARA/>\
+<TRA bold=""true""/><TEXT>xfer [</TEXT><TRA italic=""true""/><TEXT>ship </TEXT>\
+<TRA italic=""false""/><TEXT>]</TEXT><TRA bold=""false""/>\
+<POS h=""35"" relH=""true""/><TEXT>transfer equipment and commodities</TEXT><PARA/>\
+<TRA bold=""true""/><TEXT>sell [</TEXT><TRA italic=""true""/><TEXT>ship </TEXT>\
+<TRA italic=""false""/><TEXT>]</TEXT><TRA bold=""false""/>\
+<POS h=""37"" relH=""true""/><TEXT>sell a ship in storage</TEXT><PARA/>\
+<TRA bold=""true""/><TEXT>hitch [</TEXT><TRA italic=""true""/><TEXT>base </TEXT>\
+<TRA italic=""false""/><TEXT>]</TEXT><TRA bold=""false""/>\
+<POS h=""20"" relH=""true""/><TEXT>hitch a ride</TEXT><PARA/>\
+<PARA/>\
+<TRA italic=""true""/><TEXT>Ship  </TEXT><TRA italic=""false""/><TEXT>\
+is tested as a prefix of the name. It is optional (except for </TEXT><TRA \
+bold=""true""/><TEXT>sell</TEXT><TRA bold=""false""/><TEXT>) if there is only \
+one ship stored on the base, otherwise the ships will be listed. </TEXT><TRA \
+italic=""true""/><TEXT>Base  </TEXT><TRA italic=""false""/><TEXT>may only be \
+omitted if you have ships stored on one other base.</TEXT>\
+<POP/></RDL>"
+}
+
+1003 23
+{
+L"\xfeff<RDL><PUSH/>\
+<TRA bold=""true""/><TEXT>jump </TEXT><TRA italic=""true""/><TEXT>z, x, y</TEXT>\
+<TRA italic=""false"" bold=""false""/>\
+<POS h=""112"" relH=""true""/><TEXT>move forwards/backwards, right/left, up/down</TEXT><PARA/>\
+<TRA bold=""true""/><TEXT>jump [</TEXT><TRA italic=""true""/><TEXT>object</TEXT>\
+<TRA italic=""false""/><TEXT> ]</TEXT><TRA bold=""false""/>\
+<POS h=""96"" relH=""true""/><TEXT>move to the (targetted) object</TEXT><PARA/>\
+<TRA bold=""true""/><TEXT>pos [=]</TEXT><TRA italic=""true""/><TEXT>n</TEXT>\
+<TRA italic=""false""/><TRA bold=""false""/>\
+<POS h=""138"" relH=""true""/><TEXT>set or move to a bookmark</TEXT><PARA/>\
+<TRA bold=""true""/><TEXT>pos =</TEXT>><TRA bold=""false""/>\
+<POS h=""158"" relH=""true""/><TEXT>list bookmarks</TEXT><PARA/>\
+<TRA bold=""true""/><TEXT>pos copy|clip</TEXT><TRA bold=""false""/>\
+<POS h=""98"" relH=""true""/><TEXT>use the clipboard to store/set position</TEXT><PARA/>\
+<TRA bold=""true""/><TEXT>pos[r] [</TEXT><TRA italic=""true""/><TEXT>x, y, z</TEXT>\
+<TRA italic=""false""/><TEXT> [</TEXT><TRA italic=""true""/><TEXT>, p, y, r </TEXT>\
+<TRA italic=""false""/><TEXT>]]</TEXT><TRA bold=""false""/>\
+<POS h=""20"" relH=""true""/><TEXT>display/set (relative) position (and rotation)</TEXT><PARA/>\
+<TRA bold=""true""/><TEXT>rot[r] [</TEXT><TRA italic=""true""/><TEXT>p, y, r </TEXT>\
+<TRA italic=""false""/><TEXT>]</TEXT><TRA bold=""false""/>\
+<POS h=""100"" relH=""true""/><TEXT>display/set (relative) rotation</TEXT><PARA/>\
+<TRA bold=""true""/><TEXT>base</TEXT><TRA bold=""false""/>\
+<POS h=""163"" relH=""true""/><TEXT>display base's \
+nickname or previous base's name</TEXT><PARA/>\
+<TRA bold=""true""/><TEXT>base </TEXT><TRA italic=""true""/><TEXT>base </TEXT>\
+<TRA italic=""false"" bold=""false""/>\
+<POS h=""114"" relH=""true""/><TEXT>go to a base</TEXT><PARA/>\
+<TRA bold=""true""/><TEXT>system [</TEXT><TRA italic=""true""/><TEXT>system \
+</TEXT><TRA italic=""false""/><TEXT> [</TEXT><TRA italic=""true""/><TEXT>object\
+</TEXT><TRA italic=""false""/><TEXT> | </TEXT><TRA italic=""true""/><TEXT>pos \
+</TEXT><TRA italic=""false""/><TEXT>[, </TEXT><TRA italic=""true""/><TEXT>rot\
+</TEXT><TRA italic=""false""/><TEXT> ]]]</TEXT><TRA bold=""false""/><PARA/>\
+<POS h=""173"" relH=""true""/><TEXT>jump to a system or display current \
+system's nickname</TEXT><PARA/>\
+<PARA/>\
+<TEXT>Numbers may be suffixed with </TEXT><TRA bold=""true""/><TEXT>k</TEXT>\
+<TRA bold=""false""/><TEXT> or </TEXT><TRA bold=""true""/><TEXT>K</TEXT>\
+<TRA bold=""false""/><TEXT> to multiply by 1000. Individual numbers are \
+optional, defaulting to the current value or </TEXT><TRA bold=""true""/><TEXT>\
+0</TEXT><TRA bold=""false""/><TEXT>, as appropriate. There are ten bookmarks, \
+</TEXT><TRA bold=""true""/><TEXT>1</TEXT><TRA bold=""false""/><TEXT> to </TEXT>\
+<TRA bold=""true""/><TEXT>9</TEXT><TRA bold=""false""/><TEXT>, with </TEXT>\
+<TRA bold=""true""/><TEXT>0</TEXT><TRA bold=""false""/><TEXT> set \
+automatically, prior to any movement. The object, base or \
+system is tested as a nickname first, then as a case sensitive substring of \
+the name (prefix </TEXT><TRA italic=""true""/><TEXT>object  </TEXT>\
+<TRA italic=""false""/><TEXT>with </TEXT><TRA bold=""true""/><TEXT>~</TEXT>\
+<TRA bold=""false""/><TEXT> to test nickname). The object must be in the \
+current system. </TEXT><TRA italic=""true""/><TEXT>System  </TEXT>\
+<TRA italic=""false""/><TEXT>may be </TEXT><TRA bold=""true""/><TEXT>.</TEXT>\
+<TRA bold=""false""/><TEXT> for the current system; as may </TEXT><TRA \
+italic=""true""/><TEXT>base  </TEXT><TRA italic=""false""/><TEXT>for the \
+current or previous (via this command) base.</TEXT>\
+<POP/></RDL>"
+}
+
+1004 23
+{
+L"\xfeff<RDL><PUSH/>\
+<TRA bold=""true""/><TEXT>cspd [</TEXT><TRA italic=""true""/><TEXT>speed </TEXT>\
+<TRA italic=""false""/><TEXT>]</TEXT><TRA bold=""false""/>\
+<POS h=""100"" relH=""true""/><TEXT>display/set cruise speed</TEXT><PARA/>\
+<TRA bold=""true""/><TEXT>cacc [</TEXT><TRA italic=""true""/><TEXT>time </TEXT>\
+<TRA italic=""false""/><TEXT>]</TEXT><TRA bold=""false""/>\
+<POS h=""117"" relH=""true""/><TEXT>display/set time to reach cruise speed</TEXT><PARA/>\
+<TRA bold=""true""/><TEXT>anim [[&gt;|&lt;]wings|</TEXT><TRA italic=""true""/><TEXT>script </TEXT>\
+<TRA italic=""false""/><TEXT>]</TEXT><TRA bold=""false""/>\
+<POS h=""20"" relH=""true""/><TEXT>perform an animation</TEXT><PARA/>\
+<TRA bold=""true""/><TEXT>ghost</TEXT><TRA bold=""false""/>\
+<POS h=""164"" relH=""true""/><TEXT>toggle collision detection</TEXT><PARA/>\
+<TRA bold=""true""/><TEXT>godmode</TEXT><TRA bold=""false""/>\
+<POS h=""134"" relH=""true""/><TEXT>toggle invincibility</TEXT><PARA/>\
+<PARA/>\
+<TEXT>Setting a high cruise speed may require loading a game (in order to also \
+recognize the new maximum speed). </TEXT><TRA bold=""true""/><TEXT>Cspd</TEXT>\
+<TRA bold=""false""/><TEXT> will not work with MultiCruise. The default \
+animation opens/closes the bay doors; </TEXT><TRA bold=""true""/><TEXT>wings</TEXT>\
+<TRA bold=""false""/><TEXT> is short for </TEXT><TRA bold=""true""/><TEXT>\
+Sc_extend wing</TEXT><TRA bold=""false""/><TEXT>. The first </TEXT><TRA bold=""true""/>\
+<TEXT>anim</TEXT><TRA bold=""false""/><TEXT> command runs forwards, the second \
+reverses; use </TEXT><TRA bold=""true""/><TEXT>&gt;</TEXT><TRA bold=""false""/>\
+<TEXT> to explictly run forwards and </TEXT><TRA bold=""true""/><TEXT>&lt;</TEXT>\
+<TRA bold=""false""/><TEXT> for backwards. </TEXT><TRA bold=""true""/><TEXT>\
+Godmode</TEXT><TRA bold=""false""/><TEXT> takes effect on the next load.</TEXT>\
+<POP/></RDL>"
+}
+
+1005 23
+{
+L"\xfeff<RDL><PUSH/>\
+<TRA bold=""true""/><TEXT>ntb [on|off|sight]</TEXT><TRA bold=""false""/>\
+<POS h=""20"" relH=""true""/><TEXT>choose display of </TEXT>\
+<TRA underline=""true""/><TEXT>n</TEXT><TRA underline=""false""/>\
+<TEXT>on-</TEXT><TRA underline=""true""/><TEXT>t</TEXT>\
+<TRA underline=""false""/><TEXT>argetted </TEXT><TRA underline=""true""/>\
+<TEXT>b</TEXT><TRA underline=""false""/><TEXT>rackets</TEXT><PARA/>\
+<TRA bold=""true""/><TEXT>show</TEXT><TRA bold=""false""/>\
+<POS h=""107"" relH=""true""/><TEXT>toggles display of everything on the Nav \
+Map</TEXT><PARA/>\
+<TRA bold=""true""/><TEXT>show houses</TEXT><TRA bold=""false""/>\
+<POS h=""44"" relH=""true""/><TEXT>toggles display of the House labels on the \
+Universe Map</TEXT><PARA/>\
+<TRA bold=""true""/><TEXT>show paths</TEXT><TRA bold=""false""/>\
+<POS h=""58"" relH=""true""/><TEXT>toggles filtering of patrol paths on the \
+Nav Map</TEXT><PARA/>\
+<TRA bold=""true""/><TEXT>zoom [</TEXT><TRA italic=""true""/><TEXT>time </TEXT>\
+<TRA italic=""false""/><TEXT>]</TEXT><TRA bold=""false""/>\
+<POS h=""52"" relH=""true""/><TEXT>display/set time to zoom Nav Map</TEXT><PARA/>\
+<PARA/>\
+<TEXT>Sight will show the brackets when the mouse moves over the ship. Whilst \
+bases will be shown on the Nav Map (and Contact List), it is still necessary \
+to actually visit them to obtain their info.</TEXT>\
+<POP/></RDL>"
+}
+
+1006 23
+{
+L"\xfeff<RDL><PUSH/>\
+<TRA bold=""true""/><TEXT>cash [[+|-]</TEXT><TRA italic=""true""/><TEXT>amount </TEXT>\
+<TRA italic=""false""/><TEXT>]</TEXT><TRA bold=""false""/>\
+<POS h=""34"" relH=""true""/><TEXT>display/set (relative) amount of money</TEXT><PARA/>\
+<TRA bold=""true""/><TEXT>rep </TEXT><TRA italic=""true""/><TEXT>faction </TEXT>\
+<TRA italic=""false""/><TEXT>[</TEXT><TRA italic=""true""/>\
+<TEXT>value </TEXT><TRA italic=""false""/><TEXT>]</TEXT><TRA italic=""false"" bold=""false""/>\
+<POS h=""35"" relH=""true""/><TEXT>display/set reputation with </TEXT>\
+<TRA italic=""true""/><TEXT>faction</TEXT><TRA italic=""false""/><PARA/>\
+<TRA bold=""true""/><TEXT>rep = [</TEXT><TRA italic=""true""/><TEXT>faction </TEXT>\
+<TRA italic=""false""/><TEXT>|</TEXT><TRA italic=""true""/>\
+<TEXT>value</TEXT><TRA italic=""false""/><TEXT>]</TEXT><TRA bold=""false""/>\
+<POS h=""20"" relH=""true""/><TEXT>set reputation for all factions</TEXT><PARA/>\
+<TRA bold=""true""/><TEXT>rep undo</TEXT><TRA bold=""false""/>\
+<POS h=""111"" relH=""true""/><TEXT>restore reputation prior to first use of \
+</TEXT><TRA bold=""true""/><TEXT>=</TEXT><TRA bold=""false""/><PARA/>\
+<TRA bold=""true""/><TEXT>ships</TEXT><TRA bold=""false""/>\
+<POS h=""140"" relH=""true""/><TEXT>list all your stored ships</TEXT><PARA/>\
+<TRA bold=""true""/><TEXT>monkey</TEXT><TRA bold=""false""/>\
+<POS h=""120"" relH=""true""/><TEXT>give Trent a monkey's head</TEXT><PARA/>\
+<TRA bold=""true""/><TEXT>robot</TEXT><TRA bold=""false""/>\
+<POS h=""142"" relH=""true""/><TEXT>turn Trent into a robot</TEXT><PARA/>\
+<TRA bold=""true""/><TEXT>trent</TEXT><TRA bold=""false""/>\
+<POS h=""146"" relH=""true""/><TEXT>restore original Trent</TEXT><PARA/>\
+<TRA bold=""true""/><TEXT>costume </TEXT>\
+<TRA italic=""true""/><TEXT>character</TEXT><TRA italic=""false"" bold=""false""/>\
+<POS h=""35"" relH=""true""/><TEXT>use </TEXT><TRA italic=""true""/>\
+<TEXT>character</TEXT><TRA italic=""false""/><TEXT>  instead of Trent</TEXT><PARA/>\
+<PARA/>\
+<TEXT>Faction is tested as a nickname first, then as a prefix of the short \
+name; Police factions are simply the initial of the House. </TEXT>\
+<TRA italic=""true""/><TEXT>Value</TEXT><TRA italic=""false""/><TEXT>  is a \
+number between -1 and 1 (inclusive); a percentage; or: \
+</TEXT><TRA bold=""true""/><TEXT>H</TEXT><TRA bold=""false""/><TEXT> = -0.9; \
+</TEXT><TRA bold=""true""/><TEXT>h</TEXT><TRA bold=""false""/><TEXT> = -0.6; \
+</TEXT><TRA bold=""true""/><TEXT>nh</TEXT><TRA bold=""false""/><TEXT> = -0.2; \
+</TEXT><TRA bold=""true""/><TEXT>n</TEXT><TRA bold=""false""/><TEXT> = 0; \
+</TEXT><TRA bold=""true""/><TEXT>nf</TEXT><TRA bold=""false""/><TEXT> = 0.2; \
+</TEXT><TRA bold=""true""/><TEXT>f</TEXT><TRA bold=""false""/><TEXT> = 0.6; &amp; \
+</TEXT><TRA bold=""true""/><TEXT>F</TEXT><TRA bold=""false""/><TEXT> = 0.9. \
+Costume changes take effect on the next dock, or just save &amp; load. Female \
+characters will not look right, due to still using the male animations.</TEXT>\
+<POP/></RDL>"
+}
+
+
+1 VERSIONINFO
+FILEVERSION    1,2,0,4
+PRODUCTVERSION 1,2,0,4
+FILEOS	       0x40004
+FILETYPE       0x1
+{
+  BLOCK "StringFileInfo"
+  {
+    BLOCK "040904B0"
+    {
+      VALUE "CompanyName",     "Jason Hood"
+      VALUE "FileDescription", "Single-player command console"
+      VALUE "FileVersion",     "1.24"
+      VALUE "ProductName",     "Freelancer"
+      VALUE "ProductVersion",  "1, 0, 0, 0"
+      VALUE "Comments",        "http://freelancer.adoxa.vze.com/"
+    }
+  }
+
+  BLOCK "VarFileInfo"
+  {
+    VALUE "Translation", 0x0409, 0x04B0
+  }
+}

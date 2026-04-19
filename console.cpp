@@ -1110,6 +1110,19 @@ bool cmdCSpd( LPCWSTR opt )
 }
 
 
+int RandNum( int min, int max )
+{
+  return ((double)rand() / RAND_MAX) * (max - min + 1) + min;
+}
+
+bool cmdDice( LPCWSTR )
+{
+  int roll = RandNum( 1, 6 );
+  msg.printf( L"Rolled %d.", roll );
+  return true;
+}
+
+
 bool cmdCAcc( LPCWSTR opt )
 {
   if (*opt)
@@ -3457,7 +3470,7 @@ bool cmdCostume( LPCWSTR wcostume )
 
 bool cmdCoin( LPCWSTR )
 {
-  bool heads = (rand() % 2) == 0;
+  bool heads = RandNum( 0, 1 ) == 0;
   LPCWSTR flip = heads ? L"heads" : L"tails";
   msg.printf( L"Flipped %s.", flip );
   return true;
@@ -3496,6 +3509,7 @@ struct
   { L"costume",  cmdCostume  },
   { L"coin",     cmdCoin     },
   { L"cspd",     cmdCSpd     },
+  { L"dice",     cmdDice     },
   { L"drainownshield", cmdDrainShield },
   { L"draintgtshield", cmdDrainTargetShield },
   { L"drive",    cmdDrive    },

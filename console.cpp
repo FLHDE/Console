@@ -1040,6 +1040,15 @@ bool cmdJump( LPCWSTR opt )
   return false;
 }
 
+bool cmdKillSelf( LPCWSTR )
+{
+  CShip* cship = GetCShip();
+  if (cship)
+    pub::SpaceObj::Destroy( cship->id, FuseDestroy );
+
+  return false;
+}
+
 
 bool cmdCSpd( LPCWSTR opt )
 {
@@ -2140,7 +2149,7 @@ bool cmdPark( LPCWSTR )
 }
 
 
-bool cmdPong( LPCWSTR )
+bool cmdPing( LPCWSTR )
 {
   msg.string( L"Pong!" );
   return true;
@@ -3412,13 +3421,14 @@ struct
   { L"help",     cmdHelp     },
   { L"hitch",    cmdHitch    },
   { L"jump",     cmdJump     },
+  { L"killself", cmdKillSelf },
   { L"l",        cmdLaunch   },
   { L"launch",   cmdLaunch   },
   { L"load",     cmdLoad     },
   { L"monkey",   cmdMonkey   },
   { L"ntb",      cmdNTB      },
   { L"park",     cmdPark     },
-  { L"ping",     cmdPong     },
+  { L"ping",     cmdPing     },
   { L"play",     cmdPlay     },
   { L"pos",      cmdPos      },
   { L"posr",     cmdPosR     },

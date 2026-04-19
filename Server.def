@@ -27,6 +27,7 @@ EXPORTS
 ?GetShortGroupName@Reputation@pub@@YAHABIAAI@Z
 ?SetReputation@Reputation@pub@@YAHABHABIM@Z
 
+?Destroy@SpaceObj@pub@@YAHIW4DestroyType@@@Z
 ?GetBurnRadius@SpaceObj@pub@@YAHABIAAMAAVVector@@@Z
 ?GetLocation@SpaceObj@pub@@YAHIAAVVector@@AAVMatrix@@@Z
 ?GetRadius@SpaceObj@pub@@YAHABIAAMAAVVector@@@Z

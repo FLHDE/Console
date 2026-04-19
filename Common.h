@@ -462,9 +462,11 @@ struct EXTERN CShip
   /* 0x004 */ long   engine_instance;
   /* 0x008 */ BYTE   dontcare2[0x80];
   /* 0x088 */ Archetype::Ship* aship;
-  /* 0x08c */ BYTE   dontcare3[0x1a0];
+  /* 0x08c */ BYTE   dontcare3[0x24];
+  /* 0x0b0 */ UINT   id;
+  /* 0x0b4 */ BYTE   dontcare4[0x178];
   /* 0x22c */ int    bay_anim;
-  /* 0x230 */ BYTE   dontcare4[0x7c];
+  /* 0x230 */ BYTE   dontcare5[0x7c];
   /* 0x2ac */ int    bay_state; 	// enum BayState
 };
 

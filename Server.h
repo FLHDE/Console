@@ -12,6 +12,10 @@
 #include "Common.h"
 
 
+enum DestroyType {  SilentDestroy = 0,
+                    FuseDestroy = 1 };
+
+
 namespace pub
 {
   EXTERN int Save( UINT, UINT );
@@ -52,6 +56,7 @@ namespace pub
 
   namespace SpaceObj
   {
+    EXTERN int Destroy( UINT, DestroyType );
     EXTERN int GetBurnRadius( const UINT&, float&, Vector& );
     EXTERN int GetLocation( UINT, Vector&, Matrix& );
     EXTERN int GetRadius( const UINT&, float&, Vector& );

@@ -57,6 +57,7 @@ namespace pub
   namespace SpaceObj
   {
     EXTERN int Destroy( UINT, DestroyType );
+    EXTERN int DrainShields( UINT );
     EXTERN int GetBurnRadius( const UINT&, float&, Vector& );
     EXTERN int GetLocation( UINT, Vector&, Matrix& );
     EXTERN int GetRadius( const UINT&, float&, Vector& );

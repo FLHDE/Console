@@ -1054,15 +1054,15 @@ bool cmdKillSelf( LPCWSTR )
 
 
 NAKED
-UINT FASTCALL GetIdOfShip(IObjRW* obj)
+UINT FASTCALL GetIdOfType( IObjRW* obj, DWORD type )
 {
   __asm {
     mov eax, [ecx+0x10]
     test eax, eax
     je noid
     mov ecx, [eax+0x4c]
-    and ecx, 0x503
-    cmp ecx, 0x503
+    and ecx, edx
+    cmp ecx, edx
     jne noid
     mov eax, [eax+0xb0]
     ret
@@ -1083,7 +1083,7 @@ bool cmdKillTarget( LPCWSTR )
     IObjRW* target = cship->get_target();
     if (target)
     {
-      UINT tgt_ship_id = GetIdOfShip( target );
+      UINT tgt_ship_id = GetIdOfType( target, 0x503 );
       if (tgt_ship_id)
         pub::SpaceObj::Destroy( tgt_ship_id, FuseDestroy );
     }
@@ -2196,6 +2196,34 @@ bool cmdPing( LPCWSTR )
 {
   msg.string( L"Pong!" );
   return true;
+}
+
+
+bool cmdDrainShield( LPCWSTR )
+{
+  CShip* cship = GetCShip();
+  if (cship)
+    pub::SpaceObj::DrainShields( cship->id );
+
+  return false;
+}
+
+
+bool cmdDrainTargetShield( LPCWSTR )
+{
+  CShip* cship = GetCShip();
+  if (cship)
+  {
+    IObjRW* target = cship->get_target();
+    if (target)
+    {
+      UINT tgt_id = GetIdOfType( target, 0x3 );
+      if (tgt_id)
+        pub::SpaceObj::DrainShields( tgt_id );
+    }
+  }
+
+  return false;
 }
 
 
@@ -3458,6 +3486,8 @@ struct
   { L"cash",     cmdCash     },
   { L"costume",  cmdCostume  },
   { L"cspd",     cmdCSpd     },
+  { L"drainownshield", cmdDrainShield    },
+  { L"draintgtshield", cmdDrainTargetShield    },
   { L"drive",    cmdDrive    },
   { L"ghost",    cmdGhost    },
   { L"godmode",  cmdGodmode  },

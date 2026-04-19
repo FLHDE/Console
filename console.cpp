@@ -179,7 +179,7 @@ DWORD dummy;
 
 #define FUNC( func, addr ) T##func func = (T##func)addr
 
-FUNC( IsPlayerInCutscene,	0x41a3e0 );
+FUNC( IsPlayerInCutscene, 0x41a3e0 );
 FUNC( CreateSound,	0x42ae40 );
 FUNC( PlaySound,	0x4285f0 );
 FUNC( GetString,	0x4347e0 );
@@ -3455,6 +3455,15 @@ bool cmdCostume( LPCWSTR wcostume )
 }
 
 
+bool cmdCoin( LPCWSTR )
+{
+  bool heads = (rand() % 2) == 0;
+  LPCWSTR flip = heads ? L"heads" : L"tails";
+  msg.printf( L"Flipped %s.", flip );
+  return true;
+}
+
+
 bool cmdPlay( LPCWSTR nickname )
 {
   LPVOID snd = CreateSound( CreateIDW( nickname ) );
@@ -3485,9 +3494,10 @@ struct
   { L"cacc",     cmdCAcc     },
   { L"cash",     cmdCash     },
   { L"costume",  cmdCostume  },
+  { L"coin",     cmdCoin     },
   { L"cspd",     cmdCSpd     },
-  { L"drainownshield", cmdDrainShield    },
-  { L"draintgtshield", cmdDrainTargetShield    },
+  { L"drainownshield", cmdDrainShield },
+  { L"draintgtshield", cmdDrainTargetShield },
   { L"drive",    cmdDrive    },
   { L"ghost",    cmdGhost    },
   { L"godmode",  cmdGodmode  },

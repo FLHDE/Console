@@ -700,6 +700,15 @@ bool cmdPosR( LPCWSTR opt )
 }
 
 
+bool cmdPrint( LPCWSTR opt )
+{
+  msg.clear();
+  msg.style( STYLE_UNIVERSE );
+  msg.string( opt );
+  return true;
+}
+
+
 bool cmdRot( LPCWSTR opt )
 {
   Vector pos, rot;
@@ -3405,12 +3414,14 @@ struct
   { L"play",     cmdPlay     },
   { L"pos",      cmdPos      },
   { L"posr",     cmdPosR     },
+  { L"print",    cmdPrint    },
   { L"rep",      cmdRep      },
   { L"robot",    cmdRobot    },
   { L"rot",      cmdRot      },
   { L"rotr",     cmdRotR     },
   { L"s",        cmdSystem   },
   { L"save",     cmdSave     },
+  { L"say",      cmdPrint    },
   { L"sell",     cmdSell     },
   { L"ships",    cmdShips    },
   { L"show",     cmdShow     },

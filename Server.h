@@ -31,6 +31,7 @@ namespace pub
     EXTERN int GetShipID( const UINT&, UINT& );
     EXTERN int GetSystem( const UINT&, UINT& );
     EXTERN int InspectCash( const UINT&, int& );
+    EXTERN int MarkObj( UINT, UINT, int );
     EXTERN int PopUpDialog( UINT, const FmtStr&, const FmtStr&, UINT );
     EXTERN int RevertCamera( UINT );
     EXTERN int SetMonkey( UINT );

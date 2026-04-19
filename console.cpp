@@ -3424,6 +3424,33 @@ bool cmdRep( LPCWSTR opt )
   return true;
 }
 
+void MarkTarget( bool mark )
+{
+  CShip* cship = GetCShip();
+  if (cship)
+  {
+    IObjRW* target = cship->get_target();
+    if (target)
+    {
+      UINT tgt_id = GetIdOfType( target, 0x3 );
+      if (tgt_id)
+        pub::Player::MarkObj( player, tgt_id, mark );
+    }
+  }
+}
+
+bool cmdMark( LPCWSTR )
+{
+  MarkTarget( true );
+  return false;
+}
+
+bool cmdUnmark( LPCWSTR )
+{
+  MarkTarget( false );
+  return false;
+}
+
 
 bool cmdMonkey( LPCWSTR )
 {
@@ -3523,6 +3550,7 @@ struct
   { L"l",        cmdLaunch   },
   { L"launch",   cmdLaunch   },
   { L"load",     cmdLoad     },
+  { L"mark",     cmdMark     },
   { L"monkey",   cmdMonkey   },
   { L"ntb",      cmdNTB      },
   { L"park",     cmdPark     },
@@ -3543,6 +3571,7 @@ struct
   { L"show",     cmdShow     },
   { L"system",   cmdSystem   },
   { L"trent",    cmdTrent    },
+  { L"unmark",   cmdUnmark   },
   { L"xfer",     cmdXfer     },
   { L"zoom",     cmdZoom     },
 };

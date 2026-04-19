@@ -13,6 +13,7 @@ EXPORTS
 ?GetShipID@Player@pub@@YAHABIAAI@Z
 ?GetSystem@Player@pub@@YAHABIAAI@Z
 ?InspectCash@Player@pub@@YAHABIAAH@Z
+?MarkObj@Player@pub@@YAHIIH@Z
 ?PopUpDialog@Player@pub@@YAHIABUFmtStr@@0I@Z
 ?RevertCamera@Player@pub@@YAHI@Z
 ?SetMonkey@Player@pub@@YAHI@Z

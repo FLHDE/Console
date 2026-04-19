@@ -2140,6 +2140,13 @@ bool cmdPark( LPCWSTR )
 }
 
 
+bool cmdPong( LPCWSTR )
+{
+  msg.string( L"Pong!" );
+  return true;
+}
+
+
 // Retrieve a ship from storage.
 bool cmdDrive( LPCWSTR opt )
 {
@@ -3411,6 +3418,7 @@ struct
   { L"monkey",   cmdMonkey   },
   { L"ntb",      cmdNTB      },
   { L"park",     cmdPark     },
+  { L"ping",     cmdPong     },
   { L"play",     cmdPlay     },
   { L"pos",      cmdPos      },
   { L"posr",     cmdPosR     },

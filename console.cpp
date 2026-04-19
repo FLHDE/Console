@@ -58,6 +58,7 @@
 
 #define NAKED	__declspec(naked)
 #define STDCALL __stdcall
+#define FASTCALL __fastcall
 
 
 // Get chat working in single-player.
@@ -1040,11 +1041,48 @@ bool cmdJump( LPCWSTR opt )
   return false;
 }
 
+
 bool cmdKillSelf( LPCWSTR )
 {
   CShip* cship = GetCShip();
   if (cship)
     pub::SpaceObj::Destroy( cship->id, FuseDestroy );
+
+  return false;
+}
+
+NAKED
+UINT FASTCALL get_id(IObjRW* obj)
+{
+  __asm {
+    mov eax, [ecx+0x10]
+    test eax, eax
+    je noid
+    mov ecx, [eax+0x4C]
+    and ecx, 3
+    cmp cl, 3
+    jne noid
+    mov eax, [eax+0xB0]
+    ret
+  noid:
+    xor eax, eax
+    ret
+  }
+}
+
+bool cmdKillTarget( LPCWSTR )
+{
+  CShip* cship = GetCShip();
+  if (cship)
+  {
+    IObjRW* target = cship->get_target();
+    if (target)
+    {
+      UINT tgt_id = get_id( target );
+      if (tgt_id)
+        pub::SpaceObj::Destroy( tgt_id, FuseDestroy );
+    }
+  }
 
   return false;
 }
@@ -3422,6 +3460,7 @@ struct
   { L"hitch",    cmdHitch    },
   { L"jump",     cmdJump     },
   { L"killself", cmdKillSelf },
+  { L"killtarget", cmdKillTarget },
   { L"l",        cmdLaunch   },
   { L"launch",   cmdLaunch   },
   { L"load",     cmdLoad     },

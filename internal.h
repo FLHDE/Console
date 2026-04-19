@@ -9,6 +9,9 @@
 
 #include "Common.h"
 
+typedef BOOL (*TIsPlayerInCutscene)();
+extern TIsPlayerInCutscene IsPlayerInCutscene;
+
 typedef LPVOID (*TCreateSound)( const UINT& ); // sound nickname id (ID_String)
 extern TCreateSound CreateSound;
 

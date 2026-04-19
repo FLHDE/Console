@@ -179,6 +179,7 @@ DWORD dummy;
 
 #define FUNC( func, addr ) T##func func = (T##func)addr
 
+FUNC( IsPlayerInCutscene,	0x41a3e0 );
 FUNC( CreateSound,	0x42ae40 );
 FUNC( PlaySound,	0x4285f0 );
 FUNC( GetString,	0x4347e0 );
@@ -1051,18 +1052,19 @@ bool cmdKillSelf( LPCWSTR )
   return false;
 }
 
+
 NAKED
-UINT FASTCALL get_id(IObjRW* obj)
+UINT FASTCALL GetIdOfShip(IObjRW* obj)
 {
   __asm {
     mov eax, [ecx+0x10]
     test eax, eax
     je noid
-    mov ecx, [eax+0x4C]
-    and ecx, 3
-    cmp cl, 3
+    mov ecx, [eax+0x4c]
+    and ecx, 0x503
+    cmp ecx, 0x503
     jne noid
-    mov eax, [eax+0xB0]
+    mov eax, [eax+0xb0]
     ret
   noid:
     xor eax, eax
@@ -1072,15 +1074,18 @@ UINT FASTCALL get_id(IObjRW* obj)
 
 bool cmdKillTarget( LPCWSTR )
 {
+  // if (IsPlayerInCutscene())
+  //   return false;
+
   CShip* cship = GetCShip();
   if (cship)
   {
     IObjRW* target = cship->get_target();
     if (target)
     {
-      UINT tgt_id = get_id( target );
-      if (tgt_id)
-        pub::SpaceObj::Destroy( tgt_id, FuseDestroy );
+      UINT tgt_ship_id = GetIdOfShip( target );
+      if (tgt_ship_id)
+        pub::SpaceObj::Destroy( tgt_ship_id, FuseDestroy );
     }
   }
 
@@ -3460,7 +3465,7 @@ struct
   { L"hitch",    cmdHitch    },
   { L"jump",     cmdJump     },
   { L"killself", cmdKillSelf },
-  { L"killtarget", cmdKillTarget },
+  { L"killtgt",  cmdKillTarget },
   { L"l",        cmdLaunch   },
   { L"launch",   cmdLaunch   },
   { L"load",     cmdLoad     },

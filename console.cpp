@@ -879,8 +879,7 @@ CShip* GetCShip()
   __asm call	eax
   __asm test	eax, eax
   __asm jz	noship
-  __asm add	eax, 12
-  __asm mov	eax, [eax+4]
+  __asm mov	eax, [eax+16]
   noship:
   __asm ret
 }
@@ -3517,6 +3516,9 @@ bool cmdPlay( LPCWSTR nickname )
 }
 
 
+bool cmdCommands( LPCWSTR );
+
+
 typedef bool (*TCmd)( LPCWSTR );
 
 struct
@@ -3533,6 +3535,7 @@ struct
   { L"base",     cmdBase     },
   { L"cacc",     cmdCAcc     },
   { L"cash",     cmdCash     },
+  { L"commands", cmdCommands },
   { L"costume",  cmdCostume  },
   { L"coin",     cmdCoin     },
   { L"cspd",     cmdCSpd     },
@@ -3577,6 +3580,22 @@ struct
 };
 
 #define CMDS (sizeof(cmdlist)/sizeof(*cmdlist))
+
+
+bool cmdCommands( LPCWSTR )
+{
+  int i;
+
+  msg.string( L"Available commands:" );
+  msg.para();
+
+  for (i = 0; i < CMDS; ++i)
+  {
+    msg.printf( L"%s ", cmdlist[i].cmd );
+  }
+
+  return true;
+}
 
 
 bool STDCALL Console( PCHAR& rdl, int& rlen )

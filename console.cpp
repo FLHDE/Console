@@ -3469,6 +3469,17 @@ bool cmdRobot( LPCWSTR )
 }
 
 
+bool cmdTime( LPCWSTR )
+{
+  SYSTEMTIME lt;
+  GetLocalTime( &lt );
+  msg.printf( L"%u-%02u-%02u %02u:%02u:%02u",
+    (DWORD)lt.wYear, (DWORD)lt.wMonth,  (DWORD)lt.wDay,
+    (DWORD)lt.wHour, (DWORD)lt.wMinute, (DWORD)lt.wSecond );
+  return true;
+}
+
+
 bool cmdTrent( LPCWSTR )
 {
   pub::Player::SetTrent( player );
@@ -3573,6 +3584,7 @@ struct
   { L"ships",    cmdShips    },
   { L"show",     cmdShow     },
   { L"system",   cmdSystem   },
+  { L"time",     cmdTime     },
   { L"trent",    cmdTrent    },
   { L"unmark",   cmdUnmark   },
   { L"xfer",     cmdXfer     },

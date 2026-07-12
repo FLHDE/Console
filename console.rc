@@ -62,6 +62,12 @@ IDS_MONKEY,		"Monkey."
 IDS_ROBOT,		"Robot."
 IDS_TRENT,		"Trent."
 IDS_COSTUME_NOT_FOUND,	"Costume not found."
+IDS_ROLLED      "Rolled %d."
+IDS_PONG        "Pong!"
+IDS_HEADS       "heads"
+IDS_TAILS       "tails"
+IDS_FLIPPED     "Flipped %s."
+IDS_CMDS        "Available commands:"
 
 IDS_TRANSFER,		"Item Transfer"
 IDS_TRANSFER+1, 	"If you want to transfer an item, select it in a list. \

@@ -1117,7 +1117,7 @@ int RandNum( int min, int max )
 bool cmdDice( LPCWSTR )
 {
   int roll = RandNum( 1, 6 );
-  msg.printf( L"Rolled %d.", roll );
+  msg.printf( IDS(ROLLED), roll );
   return true;
 }
 
@@ -2206,7 +2206,7 @@ bool cmdPark( LPCWSTR )
 
 bool cmdPing( LPCWSTR )
 {
-  msg.string( L"Pong!" );
+  msg.strid( IDS(PONG) );
   return true;
 }
 
@@ -3508,8 +3508,10 @@ bool cmdCostume( LPCWSTR wcostume )
 bool cmdCoin( LPCWSTR )
 {
   bool heads = RandNum( 0, 1 ) == 0;
-  LPCWSTR flip = heads ? L"heads" : L"tails";
-  msg.printf( L"Flipped %s.", flip );
+
+  WCHAR flip[64];
+  GetString( RSRC, heads ? IDS(HEADS) : IDS(TAILS), flip, 64 );
+  msg.printf( IDS(FLIPPED), flip );
   return true;
 }
 
@@ -3598,7 +3600,7 @@ bool cmdCommands( LPCWSTR )
 {
   int i;
 
-  msg.string( L"Available commands:" );
+  msg.strid( IDS(CMDS) );
   msg.para();
 
   for (i = 0; i < CMDS; ++i)

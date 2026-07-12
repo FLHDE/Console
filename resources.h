@@ -52,3 +52,9 @@
 #define IDS_BOOKMARK_SET	146
 #define IDS_BOOKMARK_NOT_SET	147
 #define IDS_SOUND_NOT_FOUND	148
+#define IDS_ROLLED          149
+#define IDS_PONG            150
+#define IDS_HEADS           151
+#define IDS_TAILS           152
+#define IDS_FLIPPED         153
+#define IDS_CMDS            154

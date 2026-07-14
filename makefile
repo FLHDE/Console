@@ -4,8 +4,9 @@
 FLEXE = \games\Freelancer\EXE
 CPPFLAGS = /nologo /W3 /GX /O2 /MD /LD
 
-console.dll: console.obj binaryrdl.obj console.res common.lib dalib.lib server.lib
-	cl $(CPPFLAGS) console.obj binaryrdl.obj console.res user32.lib /link /filealign:512 /base:0x6110000
+console.dll: console.obj binaryrdl.obj console.res console.frc common.lib dalib.lib server.lib
+	cl $(CPPFLAGS) console.obj binaryrdl.obj console.res user32.lib /link /filealign:512 /base:0x6110000 /fixed
+    frc console.frc $@
 
 common.lib: common.def
 	lib /nologo /machine:ix86 /def:common.def /name:COMMON

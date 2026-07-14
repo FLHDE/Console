@@ -1,10 +1,11 @@
 H 1000
-	\bGAME\B: \h020\ba\Buto\bs\Bave, \ba\Buto\bload, sa\Bve, \blo\Bad, \bpl\Bay
+	\bGAME\B: \h020\ba\Buto\bs\Bave, \ba\Buto\blo\Bad, \bsav\Be, \blo\Bad, \bpl\Bay
 	\bBASE\B: \h023\bl\Baunch, \bpa\Brk, \bd\Brive, \bx\Bfer, \bse\Bll, \bhi\Btch
 	\bMOVE\B: \h022\bj\Bump, \bpos[r]\B, \brot[r]\B, \bb\Base, \bs\Bystem
 	\bSHIP\B: \h028\bcs\Bpd, \bcac\Bc, \ban\Bim, \bgh\Bost, \bgo\Bdmode, \bdrain\B(\bs\Belf/\bt\Bgt), \bkill\B(\bs\Belf/\bt\Bgt)
 	\bHUD\B: \h032\bn\Btb, \bsho\Bw, \bz\Boom, (\bun\B)\bma\Brk
-	\bPLAYER\B: \bcas\Bh, \bre\Bp, \bshi\Bps, \bmo\Bnkey, \brob\Bot, \bt\Brent, \bco\Bstume
+	\bPLAYER\B: \bcas\Bh, \bre\Bp, \bshi\Bps, \bmo\Bnkey, \brob\Bot, \bt\Brent, \bcos\Btume
+    \bMISC\B: \h026\bcom\Bmands, \bcoi\Bn, \bdi\Bce, \bpi\Bng, \bpr\Bint/\bsay\B, \bti\Bme
 
 	Enter \bhelp \itopic\B\I  for further help.
 
@@ -90,3 +91,11 @@ H 1006
 	Faction is tested as a nickname first, then as a prefix of the short name; Police factions are simply the initial of the House. \iValue\I  is a number between -1 and 1 \
 	(inclusive); a percentage; or: \bH\B = -0.9; \bh\B = -0.6; \bnh\B = -0.2; \bn\B = 0; \bnf\B = 0.2; \bf\B = 0.6; & \bF\B = 0.9. Costume changes take effect on the next dock, or \
 	just save & load. Female characters will not look right, due to still using the male animations.\.
+
+H 1007
+	\bcommands\B\h036list all available commands
+    \bcoin\B\h089flip a coin
+    \bdice\B\h089roll a dice
+    \bping\B\h088measure the network latency (not really)
+    \bprint/say \itext\B\I\h020output \itext\I  to the chat
+	\btime\B\h089display the current time

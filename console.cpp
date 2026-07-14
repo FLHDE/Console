@@ -467,7 +467,7 @@ bool cmdHelp( LPCWSTR topic )
   {
     static const LPCWSTR topics[] =
     {
-      L"game", L"base", L"move", L"ship", L"hud", L"player"
+      L"game", L"base", L"move", L"ship", L"hud", L"player", L"misc"
     };
     int len = wcslen( topic );
     for (i = sizeof(topics)/sizeof(*topics); --i >= 0;)

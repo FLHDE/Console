@@ -449,11 +449,11 @@ void PopUpDialog_Hook( const FmtStr& caption,
   {
     // Restore the original buffers and their lengths.
     *ADDR_FMT_STR_BUF_LEN = 0x1000;
-    memcpy( ADDR_FMT_STR_BUF_REF1, "\x8D\x8C\xFC\x00\x00\x00\x00", 7 );
+    memcpy( ADDR_FMT_STR_BUF_REF1, "\x8D\x8C\x24\xFC\x00\x00\x00", 7 );
     memcpy( ADDR_FMT_STR_BUF_REF2, "\x8D\x84\x24\x08\x01\x00\x00", 7 );
 
-    memcpy( ADDR_XML_BUF_LEN, "\x8B\x15\xF8\x19\x61\x00", 6 );
-      *((PUINT) (ADDR_XML_BUF_LEN + 2)) = POP_UP_BUFFER_COUNT;
+    memcpy( ADDR_XML_BUF_LEN, "\x8B\x15", 2 );
+      *((PUINT*) (ADDR_XML_BUF_LEN + 2)) = wstrlen;
       *ADDR_XML_BUF_REF1 = *ADDR_XML_BUF_REF2
         = *ADDR_XML_BUF_REF3 = (LPWSTR) 0x66FC60;
   }

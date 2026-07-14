@@ -62,7 +62,8 @@
 
 
 // Get chat working in single-player.
-#define ADDR_ENTER	((PBYTE)  0x46a11f+1)
+#define ADDR_ENTER_SP_CALL ((PBYTE) 0x46a117)
+#define ADDR_ENTER	((PBYTE)  0x46a11f)
 #define ADDR_ENTER1	((PBYTE)  0x437374+1)
 #define ADDR_ENTER2	((PBYTE)  0x54ae67+1)
 #define ADDR_ENTER3	((PBYTE)  0x574b91+1)
@@ -4252,6 +4253,7 @@ void Patch()
   ProtectX( ADDR_RTURN,      4 );
   //ProtectX( ADDR_UP,	       4 );
   //ProtectX( ADDR_DOWN,       4 );
+  ProtectX( ADDR_ENTER_SP_CALL, 5 );
   ProtectX( ADDR_ENTER,      1 );
   ProtectX( ADDR_MSGWIN,     5 );
   ProtectX( ADDR_COMMICON,   1 );
@@ -4329,7 +4331,9 @@ void Patch()
   ProtectX( ADDR_POP_UP,            4 );
 
   // Bypass the single-player tests preventing chat.
-  *ADDR_ENTER  =
+  memcpy( ADDR_ENTER_SP_CALL, "\x90\xA0\xA4\xA7\x67", 5 ); // game started test
+  *ADDR_ENTER = 0x74;
+
   *ADDR_ENTER1 =
   *ADDR_ENTER2 =
   *ADDR_ENTER3 =

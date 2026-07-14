@@ -159,6 +159,19 @@
 // Intercept IME usage.
 #define ADDR_IME	((PBYTE)  0x57baf3)
 
+// Pop Up dialog
+#define ADDR_POP_UP           ((PBYTE) 0x53c3ff+1)
+
+// Buffers used by the Pop Up dialog.
+#define ADDR_FMT_STR_BUF_LEN  ((PUINT) 0x41c9cb)
+#define ADDR_FMT_STR_BUF_REF1 ((PBYTE) 0x41c9cf)
+#define ADDR_FMT_STR_BUF_REF2 ((PBYTE) 0x41c9e3)
+
+#define ADDR_XML_BUF_LEN      ((PBYTE) 0x48abad)
+#define ADDR_XML_BUF_REF1     ((LPWSTR*) (0x48abb4+1))
+#define ADDR_XML_BUF_REF2     ((LPWSTR*) (0x48ac83+1))
+#define ADDR_XML_BUF_REF3     ((LPWSTR*) (0x48ac92+1))
+
 
 DWORD dummy;
 #define ProtectX( addr, size ) \
@@ -190,6 +203,7 @@ FUNC( DisplayBase,	0x45b2d0 );
 FUNC( DisplaySystem,	0x45b490 );
 FUNC( FmtCredits,	0x4779a0 );
 FUNC( DealerDialog,	0x477ab0 );
+FUNC( PopUpDialog,	0x48a380 );
 FUNC( LoadAutosave,	0x4bc830 );
 FUNC( EnterBase,	0x4c4910 );
 /*
@@ -385,6 +399,64 @@ bool cmdAbout( LPCWSTR )
   msg.para();
   msg.strid( IDS(VERSION) );
   return true;
+}
+
+
+#define POP_UP_BUFFER_COUNT (0x2000)
+
+// The buffers Freelancer uses for the Pop Up dialogs are limited to
+// 4096 bytes. Since our help page is longer than that, we want to
+// use larger buffers. We replace the buffers with custom allocated ones.
+void PopUpDialog_Hook( const FmtStr& caption,
+  const FmtStr& message, UINT flags )
+{
+  WCHAR *buf1 = NULL, *buf2 = NULL;
+  bool replace_buffers = false;
+
+  // Check if the Pop Up displays our message.
+  if (caption.strid == rsrcid
+    && message.strid == rsrcid + 1000)
+  {
+    buf1 = new WCHAR[POP_UP_BUFFER_COUNT];
+    buf2 = new WCHAR[POP_UP_BUFFER_COUNT];
+
+    replace_buffers = buf1 && buf2;
+    if (replace_buffers)
+    {
+      // Replace the buffers with our own.
+      *ADDR_FMT_STR_BUF_LEN = POP_UP_BUFFER_COUNT;
+      memcpy( ADDR_FMT_STR_BUF_REF1, "\x90\x90\xB9", 3 ); // mov ecx
+      memcpy( ADDR_FMT_STR_BUF_REF2, "\x90\x90\xB8", 3 ); // mov eax
+      *((LPWSTR*) (ADDR_FMT_STR_BUF_REF1 + 3)) = buf1;
+      *((LPWSTR*) (ADDR_FMT_STR_BUF_REF2 + 3)) = buf1;
+
+      memcpy( ADDR_XML_BUF_LEN, "\x90\xBA", 2 ); // mov edx
+      *((PUINT) (ADDR_XML_BUF_LEN + 2)) = POP_UP_BUFFER_COUNT;
+      *ADDR_XML_BUF_REF1 = *ADDR_XML_BUF_REF2
+        = *ADDR_XML_BUF_REF3 = buf2;
+    }
+  }
+
+  // Call the original function.
+  PopUpDialog( caption, message, flags );
+
+  if (buf1)
+    delete[] buf1;
+  if (buf2)
+    delete[] buf2;
+
+  if (replace_buffers)
+  {
+    // Restore the original buffers and their lengths.
+    *ADDR_FMT_STR_BUF_LEN = 0x1000;
+    memcpy( ADDR_FMT_STR_BUF_REF1, "\x8D\x8C\xFC\x00\x00\x00\x00", 7 );
+    memcpy( ADDR_FMT_STR_BUF_REF2, "\x8D\x84\x24\x08\x01\x00\x00", 7 );
+
+    memcpy( ADDR_XML_BUF_LEN, "\x8B\x15\xF8\x19\x61\x00", 6 );
+      *((PUINT) (ADDR_XML_BUF_LEN + 2)) = POP_UP_BUFFER_COUNT;
+      *ADDR_XML_BUF_REF1 = *ADDR_XML_BUF_REF2
+        = *ADDR_XML_BUF_REF3 = (LPWSTR) 0x66FC60;
+  }
 }
 
 
@@ -4245,6 +4317,17 @@ void Patch()
 
   ProtectX( ADDR_IME,	     6 );
 
+  ProtectX( ADDR_FMT_STR_BUF_LEN,   4 );
+  ProtectX( ADDR_FMT_STR_BUF_REF1,  7 );
+  ProtectX( ADDR_FMT_STR_BUF_REF2,  7 );
+
+  ProtectX( ADDR_XML_BUF_LEN,       6 );
+  ProtectX( ADDR_XML_BUF_REF1,      4 );
+  ProtectX( ADDR_XML_BUF_REF2,      4 );
+  ProtectX( ADDR_XML_BUF_REF3,      4 );
+
+  ProtectX( ADDR_POP_UP,            4 );
+
   // Bypass the single-player tests preventing chat.
   *ADDR_ENTER  =
   *ADDR_ENTER1 =
@@ -4351,6 +4434,8 @@ void Patch()
 
   CALL( ADDR_IME, Ime_Hook );
   ADDR_IME[5] = 0x90;
+
+  RELOFS( ADDR_POP_UP, PopUpDialog_Hook );
 }
 
 

@@ -58,6 +58,12 @@ typedef void (*TDealerDialog)( int,	// type of dialog
 			     );
 extern TDealerDialog DealerDialog;
 
+typedef void (*TPopUpDialog)( const FmtStr&,  // caption
+			       const FmtStr&,	                  // message
+			       UINT	                            // flags
+            );
+extern TPopUpDialog PopUpDialog;
+
 typedef void (*TLoadAutosave)();
 extern TLoadAutosave LoadAutosave;
 

@@ -1,5 +1,5 @@
 H 1000
-	\bGAME\B: \h020\ba\Buto\bs\Bave, \ba\Buto\bl oad, sa\Bve, \blo\Bad, \bpl\Bay
+	\bGAME\B: \h020\ba\Buto\bs\Bave, \ba\Buto\bload, sa\Bve, \blo\Bad, \bpl\Bay
 	\bBASE\B: \h023\bl\Baunch, \bpa\Brk, \bd\Brive, \bx\Bfer, \bse\Bll, \bhi\Btch
 	\bMOVE\B: \h023\bj\Bump, \bpos[r]\B, \brot[r]\B, \bb\Base, \bs\Bystem
 	\bSHIP\B: \h028\bcs\Bpd, \bcac\Bc, \ban\Bim, \bgh\Bost, \bgo\Bdmode
@@ -22,7 +22,7 @@ H 1001
 	not all characters are available. Described games will be listed with a leading space. Games are automatically overwritten.\.
 
 H 1002
-	\blaunch\B\h062enter space
+	\blaunch\B\h063enter space
 	\bpark\B\h082place the ship in storage
 	\bdrive [\iship \I]\B\h025get a ship out of storage
 	\bxfer [\iship \I]\B\h035transfer equipment and commodities
@@ -34,7 +34,7 @@ H 1002
 
 H 1003
 	\bjump \iz, x, y\B\I\h112move forwards/backwards, right/left, up/down
-	\bjump [\iobject\I ]\B\h096move to the (targetted) object
+	\bjump [\iobject\I ]\B\h096move to the (targeted) object
 	\bpos [=]\in\I\B\h138set or move to a bookmark
 	\bpos =\B\h158list bookmarks
 	\bpos copy|clip\B\h098use the clipboard to store/set position
@@ -58,11 +58,11 @@ H 1004
 	\bgodmode\B\h134toggle invincibility
 
 	Setting a high cruise speed may require loading a game (in order to also recognize the new maximum speed). \bCspd\B will not work with MultiCruise. The default animation \
-	opens/closes the bay doors; \bwings\B is short for \bSc_extend wing\B. The first \banim\B command runs forwards, the second reverses; use \b>\B to explictly run forwards and \b<\
+	opens/closes the bay doors; \bwings\B is short for \bSc_extend wing\B. The first \banim\B command runs forwards, the second reverses; use \b>\B to explicitly run forwards and \b<\
 	\B for backwards. \bGodmode\B takes effect on the next load.\.
 
 H 1005
-	\bntb [on|off|sight]\B\h020choose display of \un\Uon-\ut\Uargetted \ub\Urackets
+	\bntb [on|off|sight]\B\h020choose display of \un\Uon-\ut\Uargeted \ub\Urackets
 	\bshow\B\h107toggles display of everything on the Nav Map
 	\bshow houses\B\h044toggles display of the House labels on the Universe Map
 	\bshow paths\B\h058toggles filtering of patrol paths on the Nav Map

@@ -56,6 +56,10 @@ H 1004
 	\banim [[>|<]wings|\iscript \I]\B\h020perform an animation
 	\bghost\B\h164toggle collision detection
 	\bgodmode\B\h134toggle invincibility
+    \bdrainself\B\h139drain your shield
+    \bdraintgt\B\h147drain the targeted object's shield
+    \bkillself\B\h158destroy your ship
+    \bkilltgt\B\h166destroy the targeted ship
 
 	Setting a high cruise speed may require loading a game (in order to also recognize the new maximum speed). \bCspd\B will not work with MultiCruise. The default animation \
 	opens/closes the bay doors; \bwings\B is short for \bSc_extend wing\B. The first \banim\B command runs forwards, the second reverses; use \b>\B to explicitly run forwards and \b<\
@@ -67,6 +71,7 @@ H 1005
 	\bshow houses\B\h044toggles display of the House labels on the Universe Map
 	\bshow paths\B\h058toggles filtering of patrol paths on the Nav Map
 	\bzoom [\itime \I]\B\h052display/set time to zoom Nav Map
+    (\bun\B)\bmark\B\h080(un)mark the targeted object
 
 	Sight will show the brackets when the mouse moves over the ship. Whilst bases will be shown on the Nav Map (and Contact List), it is still necessary to actually visit them to \
 	obtain their info.\.

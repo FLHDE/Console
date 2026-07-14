@@ -406,7 +406,7 @@ bool cmdAbout( LPCWSTR )
 #define POP_UP_BUFFER_COUNT (0x2000)
 
 // The buffers Freelancer uses for the Pop Up dialogs are limited to
-// 4096 bytes. Since our help page is longer than that, we want to
+// 4096 words. Since our help page is longer than that, we want to
 // use larger buffers. We replace the buffers with custom allocated ones.
 void PopUpDialog_Hook( const FmtStr& caption,
   const FmtStr& message, UINT flags )

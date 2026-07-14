@@ -1,10 +1,10 @@
 H 1000
 	\bGAME\B: \h020\ba\Buto\bs\Bave, \ba\Buto\bload, sa\Bve, \blo\Bad, \bpl\Bay
 	\bBASE\B: \h023\bl\Baunch, \bpa\Brk, \bd\Brive, \bx\Bfer, \bse\Bll, \bhi\Btch
-	\bMOVE\B: \h023\bj\Bump, \bpos[r]\B, \brot[r]\B, \bb\Base, \bs\Bystem
-	\bSHIP\B: \h028\bcs\Bpd, \bcac\Bc, \ban\Bim, \bgh\Bost, \bgo\Bdmode
-	\bHUD\B: \h032\bn\Btb, \bsho\Bw, \bz\Boom
-	\bPLAYER\B: \bcas\Bh, \bre\Bp, \bshi\Bps, \bm\Bonkey, \brob\Bot, \bt\Brent, \bco\Bstume
+	\bMOVE\B: \h022\bj\Bump, \bpos[r]\B, \brot[r]\B, \bb\Base, \bs\Bystem
+	\bSHIP\B: \h028\bcs\Bpd, \bcac\Bc, \ban\Bim, \bgh\Bost, \bgo\Bdmode, \bdrain\B(\bs\Belf/\bt\Bgt), \bkill\B(\bs\Belf/\bt\Bgt)
+	\bHUD\B: \h032\bn\Btb, \bsho\Bw, \bz\Boom, (\bun\B)\bma\Brk
+	\bPLAYER\B: \bcas\Bh, \bre\Bp, \bshi\Bps, \bmo\Bnkey, \brob\Bot, \bt\Brent, \bco\Bstume
 
 	Enter \bhelp \itopic\B\I  for further help.
 

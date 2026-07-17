@@ -414,9 +414,9 @@ void PopUpDialog_Hook( const FmtStr& caption,
   WCHAR *buf1 = NULL, *buf2 = NULL;
   bool replace_buffers = false;
 
-  // Check if the Pop Up displays our message.
-  if (caption.strid == rsrcid
-    && message.strid == rsrcid + 1000)
+  // Check if the Pop Up displays one of our messages.
+  if (caption.strid >= rsrcid && caption.strid <= rsrcid + 7
+    && message.strid >= rsrcid + 1000 && message.strid <= rsrcid + 1007)
   {
     buf1 = new WCHAR[POP_UP_BUFFER_COUNT];
     buf2 = new WCHAR[POP_UP_BUFFER_COUNT];

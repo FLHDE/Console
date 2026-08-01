@@ -3574,7 +3574,10 @@ bool cmdCostume( LPCWSTR wcostume )
   }
   cd->get_costume( id, Players.playerdata->costume );
 
-  msg.printf( L"%c%s.", towupper( *wcostume ), wcostume+1 );
+  msg.printf( L"%c", towupper( *wcostume ) );
+  for (int i = 1; wcostume[i] != '\0'; ++i)
+    msg.printf( L"%c", towlower( wcostume[i] ) );
+  msg.string( L"." );
   return true;
 }
 

@@ -40,6 +40,9 @@ extern TGetString GetString;
 typedef VoiceUtf* (*TGetVoiceUtf)( UINT ); // voice UTF nickname id
 extern TGetVoiceUtf GetVoiceUtf;
 
+typedef LPVOID (*TGetVoiceProps)( const UINT& ); // voice nickname id
+extern TGetVoiceProps GetVoiceProps;
+
 typedef void (*TUpdateNavBar)();
 extern TUpdateNavBar UpdateNavBar;
 

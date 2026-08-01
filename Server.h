@@ -109,7 +109,9 @@ struct PlayerData
   /* 0x268 */ float		     hull_status;
   /* 0x26C */ CollisionGroupDescList collisiongroupdesc;
   /* 0x278 */ EquipDescList	     equipdesclist;
-  /* 0x284 */ BYTE		     dontcare2[0x60];
+  /* 0x284 */ BYTE		     dontcare2[0x3c];
+  /* 0x2C0 */ size_t       voicelen;
+  /* 0x2C4 */ char         voice[32];
   /* 0x2E4 */ Costume		     costume;
   /* 0x318 */ BYTE		     dontcare3[0x28];
   /* 0x340 */ bool		     skip_autosave;

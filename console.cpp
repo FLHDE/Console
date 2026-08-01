@@ -3512,11 +3512,13 @@ void MarkTarget( bool mark )
   }
 }
 
+
 bool cmdMark( LPCWSTR )
 {
   MarkTarget( true );
   return false;
 }
+
 
 bool cmdUnmark( LPCWSTR )
 {
@@ -3563,6 +3565,33 @@ bool cmdTrent( LPCWSTR )
 }
 
 
+bool cmdVoice( LPCWSTR wvoice )
+{
+  DWORD content	= (DWORD)GetModuleHandle( "content.dll" );
+  if (!content)
+    return false;
+
+  if (!((TGetVoiceProps) (content + 0x106e50))( CreateIDW( wvoice ) ))
+  {
+    msg.string( "Voice not found." );
+    return true;
+  }
+
+  char voice[32];
+  wcstombs( voice, wvoice, sizeof(voice) );
+
+  strcpy(Players.playerdata->voice, voice);
+  Players.playerdata->voicelen = strlen(voice);
+
+  for (int i = 0; wvoice[i] != '\0'; ++i)
+    msg.printf( L"%c", towlower( wvoice[i] ) );
+  msg.string( "." );
+  if (InSpace())
+    msg.printf( L"%s ", L"Dock and undock to apply changes." );
+  return true;
+}
+
+
 bool cmdCostume( LPCWSTR wcostume )
 {
   UINT id = CreateIDW( wcostume );
@@ -3574,7 +3603,10 @@ bool cmdCostume( LPCWSTR wcostume )
   }
   cd->get_costume( id, Players.playerdata->costume );
 
-  msg.printf( L"%c%s.", towupper( *wcostume ), wcostume+1 );
+  msg.printf( L"%c", towupper( *wcostume ) );
+  for (int i = 1; wcostume[i] != '\0'; ++i)
+    msg.printf( L"%c", towlower( wcostume[i] ) );
+  msg.string( L"." );
   return true;
 }
 
@@ -3692,6 +3724,7 @@ struct
   { L"time",     cmdTime     },
   { L"trent",    cmdTrent    },
   { L"unmark",   cmdUnmark   },
+  { L"voice",    cmdVoice   },
   { L"xfer",     cmdXfer     },
   { L"zoom",     cmdZoom     },
 };

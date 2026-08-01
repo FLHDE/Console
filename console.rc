@@ -82,6 +82,7 @@ IDS_BOOKMARK_SET,	"Bookmark set."
 IDS_BOOKMARK_NOT_SET,	"Bookmark not set."
 
 IDS_SOUND_NOT_FOUND,	"Sound not found."
+IDS_UTF_NOT_FOUND,	  "UTF not found."
 }
 
 

@@ -9,6 +9,16 @@
 
 #include "Common.h"
 
+struct VoiceUtf
+{
+	virtual void func_00();
+	virtual void func_04();
+	virtual void func_08();
+	virtual void func_0C();
+	virtual void func_10();
+	virtual LPVOID CreateSound( UINT );
+};
+
 typedef BOOL (*TIsPlayerInCutscene)();
 extern TIsPlayerInCutscene IsPlayerInCutscene;
 
@@ -26,6 +36,9 @@ typedef UINT (*TGetString)( LPVOID,	// resource table?
 			  );
 extern TGetString GetString;
 #define RSRC *(LPVOID*)0x67eca8 	// the resource table
+
+typedef VoiceUtf* (*TGetVoiceUtf)( UINT ); // voice UTF nickname id
+extern TGetVoiceUtf GetVoiceUtf;
 
 typedef void (*TUpdateNavBar)();
 extern TUpdateNavBar UpdateNavBar;

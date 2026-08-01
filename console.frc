@@ -17,7 +17,7 @@ H 1001
 	\bautoload\B\h085load the Auto Save game
 	\bsave [\islot \I|\idesc \I]\B\h020save the game
 	\bload [\islot \I|\idesc \I]\B\h024load a game
-	\bplay \isound \B\I\h062play a sound effect
+	\bplay \isound \I [\iutf \I]\B\h062play a sound effect
 
 	Only \bsave\Bd games can be \bload\Bed. Slot is a single character and will be listed as "Quick Save \islot\I "; it is converted to upper case and appended to the file name, so \
 	not all characters are available. Described games will be listed with a leading space. Games are automatically overwritten.\.

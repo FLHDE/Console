@@ -197,6 +197,7 @@ FUNC( IsPlayerInCutscene, 0x41a3e0 );
 FUNC( CreateSound,	0x42ae40 );
 FUNC( PlaySound,	0x4285f0 );
 FUNC( GetString,	0x4347e0 );
+FUNC( GetVoiceUtf,	0x430ab0 );
 FUNC( UpdateNavBar,	0x442060 );
 FUNC( CloseDialog,	0x45a460 );
 FUNC( GetRepCol,	0x45a650 );
@@ -3589,9 +3590,38 @@ bool cmdCoin( LPCWSTR )
 }
 
 
-bool cmdPlay( LPCWSTR nickname )
+bool cmdPlay( LPCWSTR opt )
 {
-  LPVOID snd = CreateSound( CreateIDW( nickname ) );
+  LPVOID snd = NULL;
+
+  int i = 0;
+  WCHAR sound_nick[64];
+  while (*opt != ' ' && *opt != '\0' && i < 63)
+    sound_nick[i++] = *opt++;
+  sound_nick[i] = '\0';
+
+  while (*opt == ' ')
+      ++opt;
+  i = 0;
+  WCHAR utf_nick[64];
+  while (*opt != ' ' && *opt != '\0' && i < 63)
+    utf_nick[i++] = *opt++;
+  utf_nick[i] = '\0';
+
+  if (*utf_nick)
+  {
+    VoiceUtf* utf = GetVoiceUtf( CreateIDW( utf_nick ) );
+    if (utf)
+      snd = utf->CreateSound( CreateIDW( sound_nick ) );
+    else
+    {
+      msg.strid( IDS(UTF_NOT_FOUND) );
+      return true;
+    }
+  }
+  else
+    snd = CreateSound( CreateIDW( sound_nick ) );
+
   if (snd == NULL)
   {
     msg.strid( IDS(SOUND_NOT_FOUND) );

@@ -58,3 +58,4 @@
 #define IDS_TAILS           152
 #define IDS_FLIPPED         153
 #define IDS_CMDS            154
+#define IDS_UTF_NOT_FOUND	  155

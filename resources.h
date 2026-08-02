@@ -59,9 +59,9 @@
 #define IDS_FLIPPED         153
 #define IDS_CMDS            154
 #define IDS_UTF_NOT_FOUND	  155
-
 #define IDS_CARGO_NOT_FOUND	 156
 #define IDS_CARGO_SUCCESS	   157
 #define IDS_CARGO_FAIL	     158
 #define IDS_CARGO_ADD	       159
 #define IDS_INVALID_QUANTITY 160
+#define IDS_LOADOUT_NOT_FOUND 161

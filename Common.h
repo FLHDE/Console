@@ -357,6 +357,14 @@ namespace Loadout
 {
   EXTERN bool ReadCargoLine( INI_Reader&, EquipDesc& );
   EXTERN bool ReadEquipLine( INI_Reader&, EquipDesc& );
+
+  struct Map
+  {
+    UINT id;
+    EquipDescVector loadout;
+  };
+
+  EXTERN Map const* Get( UINT );
 }
 
 

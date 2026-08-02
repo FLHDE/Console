@@ -2916,6 +2916,56 @@ bool cmdXfer( LPCWSTR opt )
 }
 
 
+bool cmdSetShip( LPCWSTR opt )
+{
+  if (InSpace())
+    return false;
+
+  UINT ship_id;
+
+  int i = 0;
+  WCHAR loadout[64];
+  while (*opt != ' ' && *opt != '\0' && i < 63)
+    loadout[i++] = *opt++;
+  loadout[i] = '\0';
+
+  while (*opt == ' ')
+      ++opt;
+  i = 0;
+  WCHAR ship_arch[64];
+  while (*opt != ' ' && *opt != '\0' && i < 63)
+    ship_arch[i++] = *opt++;
+  ship_arch[i] = '\0';
+
+  const Loadout::Map* map = Loadout::Get( CreateIDW( loadout ) );
+  if (!map)
+  {
+    msg.strid( IDS(LOADOUT_NOT_FOUND) );
+    return true;
+  }
+
+  if (*ship_arch)
+    ship_id = CreateIDW( ship_arch );
+  else
+  {
+    // TODO: check ship arch automatically
+    msg.strid( IDS(SHIP_NOT_FOUND) );
+    return true;
+  }
+
+  if (!Archetype::GetShip( ship_id ))
+  {
+    msg.strid( IDS(SHIP_NOT_FOUND) );
+    return true;
+  }
+
+  // TODO: check result and print info
+  pub::Player::SetShipAndLoadout( player, ship_id, map->loadout );
+
+  return true;
+}
+
+
 // Sell a ship in storage.
 bool cmdSell( LPCWSTR opt )
 {
@@ -3758,6 +3808,7 @@ struct
   { L"s",        cmdSystem   },
   { L"save",     cmdSave     },
   { L"say",      cmdPrint    },
+  { L"setship",  cmdSetShip  },
   { L"sell",     cmdSell     },
   { L"ships",    cmdShips    },
   { L"show",     cmdShow     },

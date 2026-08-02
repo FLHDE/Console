@@ -140,6 +140,7 @@ EXPORTS
 
 ?ReadCargoLine@Loadout@@YA_NAAVINI_Reader@@AAUEquipDesc@@@Z
 ?ReadEquipLine@Loadout@@YA_NAAVINI_Reader@@AAUEquipDesc@@@Z
+?Get@Loadout@@YAPBUMap@1@I@Z
 
 ?ANOM_LIMITS_MAX_VELOCITY@PhySys@@3MA
 

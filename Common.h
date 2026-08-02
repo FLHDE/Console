@@ -249,7 +249,9 @@ struct EXTERN FmtStr
 
 struct GoodInfo
 {
-  BYTE x00[0x88];
+  BYTE x00[0x70];
+  bool stackable; // 0x70
+  BYTE x74[0x14];
   UINT ids_name; // 0x88
 };
 

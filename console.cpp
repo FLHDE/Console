@@ -406,7 +406,7 @@ bool cmdAbout( LPCWSTR )
 
 bool cmdCargo( LPCWSTR opt )
 {
-  UINT quantity = 1;
+  UINT quantity = 1, added_quantity = 0;
 
   int i = 0;
   WCHAR good_arch[64];
@@ -440,14 +440,35 @@ bool cmdCargo( LPCWSTR opt )
     return true;
   }
 
-  if (pub::Player::AddCargo( player, good_id, quantity, 1.0f, false ) == S_OK)
-    msg.strid( IDS(CARGO_SUCCESS) );
+  if (gi->stackable)
+  {
+    if (pub::Player::AddCargo( player, good_id, quantity, 1.0f, false ) == S_OK)
+      msg.strid( IDS(CARGO_SUCCESS) );
+    else
+      msg.strid( IDS(CARGO_FAIL) );
+    added_quantity = quantity;
+  }
   else
-    msg.strid( IDS(CARGO_FAIL) );
+  {
+    quantity = min(quantity, 10); // having too many unique items can corrupt save data
+    for (i = 0; i < quantity; ++i)
+    {
+      if (pub::Player::AddCargo( player, good_id, 1, 1.0f, false ) == S_OK)
+        added_quantity++;
+    }
+
+    if (added_quantity == 0)
+    {
+      added_quantity = quantity;
+      msg.strid( IDS(CARGO_FAIL) );
+    }
+    else
+      msg.strid( IDS(CARGO_SUCCESS) );
+  }
 
   WCHAR name[128];
   GetString( RSRC, gi->ids_name, name, 128 );
-  msg.printf( IDS(CARGO_ADD), name, quantity );
+  msg.printf( IDS(CARGO_ADD), name, added_quantity );
   return true;
 }
 

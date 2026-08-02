@@ -93,10 +93,10 @@ H 1006
 	just save & load. Female characters will not look right, due to still using the male animations.\.
 
 H 1007
-	\bcommands\B\h036list all available commands
-    \bcoin\B\h089flip a coin
-    \bdice\B\h089roll a dice
-    \bping\B\h088measure the network latency (not really)
-    \bprint/say \itext\B\I\h020output \itext\I  to the chat
-	\btime\B\h089display the current time
-	\bcargo \icargo \I [\iquantity \I]\B\h062add \icargo\I  to cargo hold
+	\bcommands\B\h117list all available commands
+    \bcoin\B\h170flip a coin
+    \bdice\B\h170roll a dice
+    \bping\B\h169measure the network latency (not really)
+    \bprint/say \itext\B\I\h101output \itext\I  to the chat
+	\btime\B\h170display the current time
+	\bcargo \icargo \I [\iquantity \I]\B\h020add \icargo\I  to cargo hold

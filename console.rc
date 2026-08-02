@@ -83,6 +83,12 @@ IDS_BOOKMARK_NOT_SET,	"Bookmark not set."
 
 IDS_SOUND_NOT_FOUND,	"Sound not found."
 IDS_UTF_NOT_FOUND,	  "UTF not found."
+
+IDS_CARGO_NOT_FOUND,	"Cargo not found."
+IDS_CARGO_SUCCESS,	  "Added"
+IDS_CARGO_FAIL,	      "Could not add"
+IDS_CARGO_ADD         " %s (%u) to cargo hold."
+IDS_INVALID_QUANTITY, "Quantity must be at least 1."
 }
 
 

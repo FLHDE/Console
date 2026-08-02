@@ -247,6 +247,19 @@ struct EXTERN FmtStr
 };
 
 
+struct GoodInfo
+{
+  BYTE x00[0x88];
+  UINT ids_name; // 0x88
+};
+
+
+namespace GoodList
+{
+  EXTERN GoodInfo const * find_by_archetype( UINT );
+};
+
+
 class EXTERN INI_Reader
 {
 public:

@@ -404,6 +404,54 @@ bool cmdAbout( LPCWSTR )
 }
 
 
+bool cmdCargo( LPCWSTR opt )
+{
+  UINT quantity = 1;
+
+  int i = 0;
+  WCHAR good_arch[64];
+  while (*opt != ' ' && *opt != '\0' && i < 63)
+    good_arch[i++] = *opt++;
+  good_arch[i] = '\0';
+
+  while (*opt == ' ')
+      ++opt;
+  i = 0;
+  WCHAR quantity_wcs[64];
+  while (*opt != ' ' && *opt != '\0' && i < 63)
+    quantity_wcs[i++] = *opt++;
+  quantity_wcs[i] = '\0';
+
+  if (*quantity_wcs)
+  {
+    quantity = wcstoul( quantity_wcs, NULL, 10 );
+    if (quantity == 0)
+    {
+      msg.strid( IDS(INVALID_QUANTITY) );
+      return true;
+    }
+  }
+
+  UINT good_id =  CreateIDW( good_arch );
+  GoodInfo const* gi = GoodList::find_by_archetype( good_id );
+  if (!gi)
+  {
+    msg.strid( IDS(CARGO_NOT_FOUND) );
+    return true;
+  }
+
+  if (pub::Player::AddCargo( player, good_id, quantity, 1.0f, false ) == S_OK)
+    msg.strid( IDS(CARGO_SUCCESS) );
+  else
+    msg.strid( IDS(CARGO_FAIL) );
+
+  WCHAR name[128];
+  GetString( RSRC, gi->ids_name, name, 128 );
+  msg.printf( IDS(CARGO_ADD), name, quantity );
+  return true;
+}
+
+
 #define POP_UP_BUFFER_COUNT (0x2000)
 
 // The buffers Freelancer uses for the Pop Up dialogs are limited to
@@ -3653,6 +3701,7 @@ struct
   { L"autosave", cmdAutoSave },
   { L"base",     cmdBase     },
   { L"cacc",     cmdCAcc     },
+  { L"cargo",    cmdCargo    },
   { L"cash",     cmdCash     },
   { L"commands", cmdCommands },
   { L"costume",  cmdCostume  },

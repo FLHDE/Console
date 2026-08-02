@@ -8,6 +8,8 @@ EXPORTS
 ?SinglePlayer@@YA_NXZ
 ?arch_is_combinable@@YA_NI@Z
 
+?find_by_archetype@GoodList@@YAPBUGoodInfo@@I@Z
+
 ?Add@AnimDB@@YAXH@Z
 ?Rem@AnimDB@@YAXH@Z
 

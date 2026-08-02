@@ -5,6 +5,7 @@ EXPORTS
 ?Save@pub@@YAHII@Z
 
 ?AdjustCash@Player@pub@@YAHABIH@Z
+?AddCargo@Player@pub@@YAHABI0IM_N@Z
 ?ForceLand@Player@pub@@YAHII@Z
 ?GetAssetValue@Player@pub@@YAHABIAAM@Z
 ?GetBase@Player@pub@@YAHABIAAI@Z

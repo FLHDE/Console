@@ -23,6 +23,7 @@ namespace pub
   namespace Player
   {
     EXTERN int AdjustCash( const UINT&, int );
+    EXTERN int AddCargo( const UINT&, const UINT&, UINT, float, bool );
     EXTERN int ForceLand( UINT, UINT );
     EXTERN int GetAssetValue( const UINT&, float& );
     EXTERN int GetBase( const UINT&, UINT& );

@@ -53,6 +53,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <algorithm>
+#include <map>
 
 #define PI 3.14159265f
 
@@ -143,6 +144,8 @@
 // Changing system when docked.
 #define ADDR_SHIPLAUNCH ((PDWORD)(0x62b2a80+1))
 #define ADDR_HARDPOINT	((PDWORD)(0x62aa9de+1))
+
+#define OFFSET_READ_ARCH (0x6311876+1 - 0x6260000)
 
 // Animation
 #define ADDR_SHIELD	((PBYTE)  0x62b2ba1)
@@ -2916,6 +2919,36 @@ bool cmdXfer( LPCWSTR opt )
 }
 
 
+typedef std::map<UINT, UINT>  MArch;
+typedef MArch::const_iterator	MArchCIter;
+
+MArch ship_archetypes;
+
+
+void FASTCALL parse_loadout_archetype( INI_Reader& ini, const PUINT loadout_info, LPCSTR value )
+{
+  if (ini.is_value(value))
+  {
+    if (loadout_info && loadout_info[4])
+    {
+      ship_archetypes[loadout_info[4]] = CreateID( ini.get_value_string() );
+    }
+  }
+}
+
+
+// This intercepts the unimplemented "archetype" handling when parsing the loadouts.
+// Here we want to store the archetype associated with the loadout.
+NAKED
+void parse_loadout_archetype_hook()
+{
+  __asm push [esp+4]
+  __asm mov edx, [esp+0x28]
+  __asm call parse_loadout_archetype
+  __asm ret 4
+}
+
+
 bool cmdSetShip( LPCWSTR opt )
 {
   if (InSpace())
@@ -2937,7 +2970,8 @@ bool cmdSetShip( LPCWSTR opt )
     ship_arch[i++] = *opt++;
   ship_arch[i] = '\0';
 
-  const Loadout::Map* map = Loadout::Get( CreateIDW( loadout ) );
+  UINT loadout_id = CreateIDW( loadout );
+  const Loadout::Map* map = Loadout::Get( loadout_id );
   if (!map)
   {
     msg.strid( IDS(LOADOUT_NOT_FOUND) );
@@ -2948,19 +2982,32 @@ bool cmdSetShip( LPCWSTR opt )
     ship_id = CreateIDW( ship_arch );
   else
   {
-    // TODO: check ship arch automatically
-    msg.strid( IDS(SHIP_NOT_FOUND) );
-    return true;
+    // Try to find the associated ship archetype.
+    MArchCIter iter = ship_archetypes.find( loadout_id );
+    if (iter == ship_archetypes.end())
+    {
+      msg.strid( IDS(LOADOUT_SHIP_NOT_FOUND) );
+      return true;
+    }
+    ship_id = iter->second;
   }
 
-  if (!Archetype::GetShip( ship_id ))
+  Archetype::Ship* ship = Archetype::GetShip( ship_id );
+  if (!ship)
   {
     msg.strid( IDS(SHIP_NOT_FOUND) );
     return true;
   }
 
-  // TODO: check result and print info
-  pub::Player::SetShipAndLoadout( player, ship_id, map->loadout );
+  CloseDialog();
+
+  if (pub::Player::SetShipAndLoadout( player, ship_id, map->loadout ) != S_OK)
+    msg.strid( IDS(LOADOUT_SHIP_FAIL) );
+
+  msg.strid(ship->strid);
+  for (i = 0; loadout[i] != '\0'; ++i)
+    loadout[i] = towlower( loadout[i] );
+  msg.printf( IDS(LOADOUT_SHIP_CONJ), loadout );
 
   return true;
 }
@@ -4484,6 +4531,9 @@ void Patch()
 
   ProtectX( ADDR_POP_UP,            4 );
 
+  PBYTE common = (PBYTE)GetModuleHandle("common.dll");
+  ProtectX( common + OFFSET_READ_ARCH, 4 );
+
   // Bypass the single-player tests preventing chat.
   memcpy( ADDR_ENTER_SP_CALL, "\x90\xA0\xA4\xA7\x67", 5 ); // game started test
   *ADDR_ENTER = 0x74;
@@ -4594,6 +4644,8 @@ void Patch()
   ADDR_IME[5] = 0x90;
 
   RELOFS( ADDR_POP_UP, PopUpDialog_Hook );
+
+  RELOFS( common + OFFSET_READ_ARCH, parse_loadout_archetype_hook );
 }
 
 

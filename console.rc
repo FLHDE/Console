@@ -91,6 +91,9 @@ IDS_CARGO_ADD         " %s (%u) to cargo hold."
 IDS_INVALID_QUANTITY, "Quantity must be at least 1."
 
 IDS_LOADOUT_NOT_FOUND, "Loadout not found."
+IDS_LOADOUT_SHIP_NOT_FOUND,	"Ship associated with loadout not found."
+IDS_LOADOUT_SHIP_FAIL,	"Could not set "
+IDS_LOADOUT_SHIP_CONJ,	" and %s."
 
 }
 

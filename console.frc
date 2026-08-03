@@ -1,6 +1,6 @@
 H 1000
 	\bGAME\B: \h020\ba\Buto\bs\Bave, \ba\Buto\blo\Bad, \bsav\Be, \blo\Bad, \bpl\Bay
-	\bBASE\B: \h023\bl\Baunch, \bpa\Brk, \bd\Brive, \bx\Bfer, \bse\Bll, \bhi\Btch
+	\bBASE\B: \h023\bl\Baunch, \bpa\Brk, \bd\Brive, \bx\Bfer, \bsel\Bl, \bhi\Btch, \bset\Bship
 	\bMOVE\B: \h022\bj\Bump, \bpos[r]\B, \brot[r]\B, \bb\Base, \bs\Bystem
 	\bSHIP\B: \h028\bcs\Bpd, \bcac\Bc, \ban\Bim, \bgh\Bost, \bgo\Bdmode, \bdrain\B(\bs\Belf/\bt\Bgt), \bkill\B(\bs\Belf/\bt\Bgt)
 	\bHUD\B: \h032\bn\Btb, \bsho\Bw, \bz\Boom, (\bun\B)\bma\Brk
@@ -23,12 +23,13 @@ H 1001
 	not all characters are available. Described games will be listed with a leading space. Games are automatically overwritten.\.
 
 H 1002
-	\blaunch\B\h063enter space
-	\bpark\B\h082place the ship in storage
-	\bdrive [\iship \I]\B\h025get a ship out of storage
-	\bxfer [\iship \I]\B\h035transfer equipment and commodities
-	\bsell [\iship \I]\B\h037sell a ship in storage
-	\bhitch [\ibase \I]\B\h020hitch a ride
+	\blaunch\B\h146enter space
+	\bpark\B\h164place the ship in storage
+	\bdrive [\iship \I]\B\h107get a ship out of storage
+	\bxfer [\iship \I]\B\h117transfer equipment and commodities
+	\bsell [\iship \I]\B\h119sell a ship in storage
+	\bhitch [\ibase \I]\B\h102hitch a ride
+	\bsetship \iloadout \I [\iship \I]\B\h020set the current ship
 
 	\iShip  \Iis tested as a prefix of the name. It is optional (except for \bsell\B) if there is only one ship stored on the base, otherwise the ships will be listed. \iBase  \Imay \
 	only be omitted if you have ships stored on one other base.\.

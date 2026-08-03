@@ -2323,6 +2323,9 @@ void UpdateShip( bool park )
 // Put the ship into storage.
 bool cmdPark( LPCWSTR )
 {
+  if (IsPlayerInCutscene())
+    return false;
+
   ShipStatus status;
   if (!GetShipStatus( status ))
     return false;
@@ -2417,6 +2420,7 @@ bool cmdDrive( LPCWSTR opt )
 
   Archetype::Ship* aship = Archetype::GetShip( iter->ship );
   msg.strid( aship->strid );
+  msg.string( L"." );
 
   // Take it out of storage.
   ship_storage.erase( iter );

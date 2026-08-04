@@ -1,11 +1,11 @@
 H 1000
-	\bGAME\B: \h020\ba\Buto\bs\Bave, \ba\Buto\blo\Bad, \bsav\Be, \blo\Bad, \bpl\Bay
-	\bBASE\B: \h023\bl\Baunch, \bpa\Brk, \bd\Brive, \bx\Bfer, \bsel\Bl, \bhi\Btch, \bset\Bship
-	\bMOVE\B: \h022\bj\Bump, \bpos[r]\B, \brot[r]\B, \bb\Base, \bs\Bystem
-	\bSHIP\B: \h028\bcs\Bpd, \bcac\Bc, \ban\Bim, \bgh\Bost, \bgo\Bdmode, \bdrain\B(\bs\Belf/\bt\Bgt), \bkill\B(\bs\Belf/\bt\Bgt)
-	\bHUD\B: \h032\bn\Btb, \bsho\Bw, \bz\Boom, (\bun\B)\bma\Brk
-	\bPLAYER\B: \bcas\Bh, \bre\Bp, \bshi\Bps, \bmo\Bnkey, \brob\Bot, \bt\Brent, \bcos\Btume
-    \bMISC\B: \h026\bcom\Bmands, \bcoi\Bn, \bdi\Bce, \bpi\Bng, \bpr\Bint/\bsay\B, \bti\Bme, (\bad\Bd)\bcar\Bgo
+	\bGAME\B: \h024\ba\Buto\bs\Bave, \ba\Buto\blo\Bad, \bsav\Be, \blo\Bad, \bpl\Bay
+	\bBASE\B: \h030\bl\Baunch, \bpa\Brk, \bd\Brive, \bx\Bfer, \bsel\Bl, \bhi\Btch, \bset\Bship
+	\bMOVE\B: \h026\bj\Bump, \bpos[r]\B, \brot[r]\B, \bb\Base, \bs\Bystem
+	\bSHIP\B: \h038\bcs\Bpd, \bcac\Bc, \ban\Bim, \bgh\Bost, \bgo\Bdmode, \bdrain\B(\bs\Belf/\bt\Bgt), \bkill\B(\bs\Belf/\bt\Bgt)
+	\bHUD\B: \h043\bn\Btb, \bsho\Bw, \bz\Boom, (\bun\B)\bma\Brk
+	\bPLAYER\B: \bcas\Bh, \bre\Bp, \bshi\Bps, \bmo\Bnkey, \brob\Bot, \btr\Bent, \bcos\Btume
+    \bMISC\B: \h034\bcom\Bmands, \bcoi\Bn, \bdi\Bce, \bpi\Bng, \bpr\Bint/\bsay\B, \bti\Bme, (\bad\Bd)\bcar\Bgo
 
 	Enter \bhe\Blp \i\btopic\B\I  for further help.
 
@@ -13,39 +13,39 @@ H 1000
 	append \b*\B, \b**\B or \b*\iN\B\I  to stop at the second, third or \iN \Ith match.\.
 
 H 1001
-	\bautosave\B\h081save the Auto Save game
-	\bautoload\B\h085load the Auto Save game
+	\bautosave\B\h103save the Auto Save game
+	\bautoload\B\h109load the Auto Save game
 	\bsave [\islot \I|\idesc \I]\B\h020save the game
-	\bload [\islot \I|\idesc \I]\B\h024load a game
-	\bplay \isound \I [\iutf \I]\B\h062play a sound effect
+	\bload [\islot \I|\idesc \I]\B\h026load a game
+	\bplay \isound \I [\iutf \I]\B\h023play a sound effect
 
 	Only \bsave\Bd games can be \bload\Bed. Slot is a single character and will be listed as "Quick Save \islot\I "; it is converted to upper case and appended to the file name, so \
 	not all characters are available. Described games will be listed with a leading space. Games are automatically overwritten.\.
 
 H 1002
-	\blaunch\B\h146enter space
-	\bpark\B\h164place the ship in storage
-	\bdrive [\iship \I]\B\h107get a ship out of storage
-	\bxfer [\iship \I]\B\h117transfer equipment and commodities
-	\bsell [\iship \I]\B\h119sell a ship in storage
-	\bhitch [\ibase \I]\B\h102hitch a ride
+	\blaunch\B\h188enter space
+	\bpark\B\h211place the ship in storage
+	\bdrive [\iship \I]\B\h135get a ship out of storage
+	\bxfer [\iship \I]\B\h146transfer equipment and commodities
+	\bsell [\iship \I]\B\h151sell a ship in storage
+	\bhitch [\ibase \I]\B\h128hitch a ride
 	\bsetship \iloadout \I [\iship \I]\B\h020set the current ship
 
 	\iShip  \Iis tested as a prefix of the name. It is optional (except for \bsell\B) if there is only one ship stored on the base, otherwise the ships will be listed. \iBase  \Imay \
 	only be omitted if you have ships stored on one other base.\.
 
 H 1003
-	\bjump \iz, x, y\B\I\h112move forwards/backwards, right/left, up/down
-	\bjump [\iobject\I ]\B\h096move to the (targeted) object
-	\bpos [=]\in\I\B\h138set or move to a bookmark
-	\bpos =\B\h158list bookmarks
-	\bpos copy|clip\B\h098use the clipboard to store/set position
+	\bjump \iz, x, y\B\I\h147move forwards/backwards, right/left, up/down
+	\bjump [\iobject\I ]\B\h127move to the (targeted) object
+	\bpos [=]\in\I\B\h182set or move to a bookmark
+	\bpos =\B\h209list bookmarks
+	\bpos copy|clip\B\h131use the clipboard to store/set position
 	\bpos[r] [\ix, y, z\I [\i, p, y, r \I]]\B\h020display/set (relative) position (and rotation)
-	\brot[r] [\ip, y, r \I]\B\h100display/set (relative) rotation
-	\bbase\B\h163display base’s nickname or previous base’s name
-	\bbase \ibase \B\I\h114go to a base
+	\brot[r] [\ip, y, r \I]\B\h129display/set (relative) rotation
+	\bbase\B\h217display base’s nickname or previous base’s name
+	\bbase \ibase \B\I\h152go to a base
 	\bsystem [\isystem \I [\iobject\I | \ipos \I[, \irot\I ]]]\B
-	\h173jump to a system or display current system’s nickname
+	\h270jump to a system or display current system’s nickname
 
 	Numbers may be suffixed with \bk\B or \bK\B to multiply by 1000. Individual numbers are optional, defaulting to the current value or \b0\B, as appropriate. There are ten \
 	bookmarks, \b1\B to \b9\B, with \b0\B set automatically, prior to any movement. The object, base or system is tested as a nickname first, then as a case sensitive substring of \
@@ -53,15 +53,15 @@ H 1003
 	current or previous (via this command) base.\.
 
 H 1004
-	\bcspd [\ispeed \I]\B\h100display/set cruise speed
-	\bcacc [\itime \I]\B\h117display/set time to reach cruise speed
+	\bcspd [\ispeed \I]\B\h129display/set cruise speed
+	\bcacc [\itime \I]\B\h150display/set time to reach cruise speed
 	\banim [[>|<]wings|\iscript \I]\B\h020perform an animation
-	\bghost\B\h164toggle collision detection
-	\bgodmode\B\h134toggle invincibility
-    \bdrainself\B\h139drain your shield
-    \bdraintgt\B\h147drain the targeted object’s shield
-    \bkillself\B\h158destroy your ship
-    \bkilltgt\B\h166destroy the targeted ship
+	\bghost\B\h213toggle collision detection
+	\bgodmode\B\h174toggle invincibility
+    \bdrainself\B\h182drain your shield
+    \bdraintgt\B\h192drain the targeted object’s shield
+    \bkillself\B\h207destroy your ship
+    \bkilltgt\B\h217destroy the targeted ship
 
 	Setting a high cruise speed may require loading a game (in order to also recognize the new maximum speed). \bCspd\B will not work with MultiCruise. The default animation \
 	opens/closes the bay doors; \bwings\B is short for \bSc_extend wing\B. The first \banim\B command runs forwards, the second reverses; use \b>\B to explicitly run forwards and \b<\
@@ -69,37 +69,37 @@ H 1004
 
 H 1005
 	\bntb [on|off|sight]\B\h020choose display of \un\Uon-\ut\Uargeted \ub\Urackets
-	\bshow\B\h107toggles display of everything on the Nav Map
-	\bshow houses\B\h044toggles display of the House labels on the Universe Map
-	\bshow paths\B\h058toggles filtering of patrol paths on the Nav Map
-	\bzoom [\itime \I]\B\h052display/set time to zoom Nav Map
-    (\bun\B)\bmark\B\h080(un)mark the targeted object
+	\bshow\B\h136toggles display of everything on the Nav Map
+	\bshow houses\B\h053toggles display of the House labels on the Universe Map
+	\bshow paths\B\h071toggles filtering of patrol paths on the Nav Map
+	\bzoom [\itime \I]\B\h062display/set time to zoom Nav Map
+    (\bun\B)\bmark\B\h099(un)mark the targeted object
 
 	Sight will show the brackets when the mouse moves over the ship. Whilst bases will be shown on the Nav Map (and Contact List), it is still necessary to actually visit them to \
 	obtain their info.\.
 
 H 1006
-	\bcash [[+|-]\iamount \I]\B\h034display/set (relative) amount of money
-	\brep \ifaction \I[\ivalue \I]\B\h035display/set reputation with \ifaction\I
+	\bcash [[+|-]\iamount \I]\B\h037display/set (relative) amount of money
+	\brep \ifaction \I[\ivalue \I]\B\h041display/set reputation with \ifaction\I
 	\brep = [\ifaction \I|\ivalue\I]\B\h020set reputation for all factions
-	\brep undo\B\h111restore reputation prior to first use of \b=\B
-	\bships\B\h140list all your stored ships
-	\bmonkey\B\h120give Trent a monkey’s head
-	\brobot\B\h142turn Trent into a robot
-	\btrent\B\h146restore original Trent
-	\bcostume \icharacter\B\I\h035use \icharacter\I  instead of Trent
+	\brep undo\B\h143restore reputation prior to first use of \b=\B
+	\bships\B\h181list all your stored ships
+	\bmonkey\B\h154give Trent a monkey’s head
+	\brobot\B\h182turn Trent into a robot
+	\btrent\B\h188restore original Trent
+	\bcostume \icharacter\B\I\h041use \icharacter\I  instead of Trent
 
 	Faction is tested as a nickname first, then as a prefix of the short name; Police factions are simply the initial of the House. \iValue\I  is a number between -1 and 1 \
 	(inclusive); a percentage; or: \bH\B = -0.9; \bh\B = -0.6; \bnh\B = -0.2; \bn\B = 0; \bnf\B = 0.2; \bf\B = 0.6; & \bF\B = 0.9. Costume changes take effect on the next dock, or \
 	just save & load. Female characters will not look right, due to still using the male animations.\.
 
 H 1007
-	\bcommands\B\h159list all available commands
-    \bcoin\B\h212flip a coin
-    \bdice\B\h212roll a dice
-    \bping\B\h211measure the network latency (not really)
-    \bprint/say \itext\B\I\h143output \itext\I  to the chat
-	\btime\B\h212display the current time
+	\bcommands\B\h204list all available commands
+    \bcoin\B\h276flip a coin
+    \bdice\B\h275roll a dice
+    \bping\B\h274measure the network latency (not really)
+    \bprint/say \itext\B\I\h182output \itext\I  to the chat
+	\btime\B\h274display the current time
 	\b(add)cargo \icargo \I [\iquantity \I]\B\h020add \icargo\I  to cargo hold
 	
 	Do not add too many unique items to the cargo hold as this can corrupt the save file.

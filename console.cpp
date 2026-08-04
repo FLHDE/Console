@@ -2934,9 +2934,7 @@ void FASTCALL parse_loadout_archetype( INI_Reader& ini, const PUINT loadout_info
   if (ini.is_value(value))
   {
     if (loadout_info && loadout_info[4])
-    {
       ship_archetypes[loadout_info[4]] = CreateID( ini.get_value_string() );
-    }
   }
 }
 
@@ -2961,8 +2959,8 @@ bool cmdSetShip( LPCWSTR opt )
   UINT ship_id;
 
   int i = 0;
-  WCHAR loadout[64];
-  while (*opt != ' ' && *opt != '\0' && i < 63)
+  WCHAR loadout[128];
+  while (*opt != ' ' && *opt != '\0' && i < 127)
     loadout[i++] = *opt++;
   loadout[i] = '\0';
 
@@ -3008,7 +3006,7 @@ bool cmdSetShip( LPCWSTR opt )
   if (pub::Player::SetShipAndLoadout( player, ship_id, map->loadout ) != S_OK)
     msg.strid( IDS(LOADOUT_SHIP_FAIL) );
 
-  msg.strid(ship->strid);
+  msg.strid( ship->strid );
   for (i = 0; loadout[i] != '\0'; ++i)
     loadout[i] = towlower( loadout[i] );
   msg.printf( IDS(LOADOUT_SHIP_CONJ), loadout );
@@ -3816,6 +3814,7 @@ struct
   TCmd	  func;
 } cmdlist[] = {
   { L"about",    cmdAbout    },
+  { L"addcargo", cmdCargo    },
   { L"anim",     cmdAnim     },
   { L"al",       cmdAutoLoad },
   { L"as",       cmdAutoSave },
@@ -4535,7 +4534,7 @@ void Patch()
 
   ProtectX( ADDR_POP_UP,            4 );
 
-  PBYTE common = (PBYTE)GetModuleHandle("common.dll");
+  PBYTE common = (PBYTE)GetModuleHandle( "common.dll" );
   ProtectX( common + OFFSET_READ_ARCH, 4 );
 
   // Bypass the single-player tests preventing chat.

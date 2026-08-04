@@ -5,7 +5,7 @@ H 1000
 	\bSHIP\B: \h028\bcs\Bpd, \bcac\Bc, \ban\Bim, \bgh\Bost, \bgo\Bdmode, \bdrain\B(\bs\Belf/\bt\Bgt), \bkill\B(\bs\Belf/\bt\Bgt)
 	\bHUD\B: \h032\bn\Btb, \bsho\Bw, \bz\Boom, (\bun\B)\bma\Brk
 	\bPLAYER\B: \bcas\Bh, \bre\Bp, \bshi\Bps, \bmo\Bnkey, \brob\Bot, \bt\Brent, \bcos\Btume
-    \bMISC\B: \h026\bcom\Bmands, \bcoi\Bn, \bdi\Bce, \bpi\Bng, \bpr\Bint/\bsay\B, \bti\Bme, \bcar\Bgo
+    \bMISC\B: \h026\bcom\Bmands, \bcoi\Bn, \bdi\Bce, \bpi\Bng, \bpr\Bint/\bsay\B, \bti\Bme, (\bad\Bd)\bcar\Bgo
 
 	Enter \bhe\Blp \i\btopic\B\I  for further help.
 
@@ -42,10 +42,10 @@ H 1003
 	\bpos copy|clip\B\h098use the clipboard to store/set position
 	\bpos[r] [\ix, y, z\I [\i, p, y, r \I]]\B\h020display/set (relative) position (and rotation)
 	\brot[r] [\ip, y, r \I]\B\h100display/set (relative) rotation
-	\bbase\B\h163display baseï¿½s nickname or previous baseï¿½s name
+	\bbase\B\h163display base’s nickname or previous base’s name
 	\bbase \ibase \B\I\h114go to a base
 	\bsystem [\isystem \I [\iobject\I | \ipos \I[, \irot\I ]]]\B
-	\h173jump to a system or display current systemï¿½s nickname
+	\h173jump to a system or display current system’s nickname
 
 	Numbers may be suffixed with \bk\B or \bK\B to multiply by 1000. Individual numbers are optional, defaulting to the current value or \b0\B, as appropriate. There are ten \
 	bookmarks, \b1\B to \b9\B, with \b0\B set automatically, prior to any movement. The object, base or system is tested as a nickname first, then as a case sensitive substring of \
@@ -59,7 +59,7 @@ H 1004
 	\bghost\B\h164toggle collision detection
 	\bgodmode\B\h134toggle invincibility
     \bdrainself\B\h139drain your shield
-    \bdraintgt\B\h147drain the targeted objectï¿½s shield
+    \bdraintgt\B\h147drain the targeted object’s shield
     \bkillself\B\h158destroy your ship
     \bkilltgt\B\h166destroy the targeted ship
 
@@ -84,7 +84,7 @@ H 1006
 	\brep = [\ifaction \I|\ivalue\I]\B\h020set reputation for all factions
 	\brep undo\B\h111restore reputation prior to first use of \b=\B
 	\bships\B\h140list all your stored ships
-	\bmonkey\B\h120give Trent a monkeyï¿½s head
+	\bmonkey\B\h120give Trent a monkey’s head
 	\brobot\B\h142turn Trent into a robot
 	\btrent\B\h146restore original Trent
 	\bcostume \icharacter\B\I\h035use \icharacter\I  instead of Trent
@@ -94,10 +94,12 @@ H 1006
 	just save & load. Female characters will not look right, due to still using the male animations.\.
 
 H 1007
-	\bcommands\B\h117list all available commands
-    \bcoin\B\h170flip a coin
-    \bdice\B\h170roll a dice
-    \bping\B\h169measure the network latency (not really)
-    \bprint/say \itext\B\I\h101output \itext\I  to the chat
-	\btime\B\h170display the current time
-	\bcargo \icargo \I [\iquantity \I]\B\h020add \icargo\I  to cargo hold
+	\bcommands\B\h159list all available commands
+    \bcoin\B\h212flip a coin
+    \bdice\B\h212roll a dice
+    \bping\B\h211measure the network latency (not really)
+    \bprint/say \itext\B\I\h143output \itext\I  to the chat
+	\btime\B\h212display the current time
+	\b(add)cargo \icargo \I [\iquantity \I]\B\h020add \icargo\I  to cargo hold
+	
+	Do not add too many unique items to the cargo hold as this can corrupt the save file.

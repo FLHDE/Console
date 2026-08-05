@@ -95,6 +95,9 @@ IDS_LOADOUT_SHIP_NOT_FOUND,	"Ship associated with loadout not found."
 IDS_LOADOUT_SHIP_FAIL,	"Could not set "
 IDS_LOADOUT_SHIP_CONJ,	" and %s."
 
+IDS_VOICE_NOT_FOUND,	"Voice not found."
+IDS_VOICE_APPLY_CHANGES, "Save game and reload to apply changes."
+
 }
 
 

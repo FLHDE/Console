@@ -4,7 +4,7 @@ H 1000
 	\bMOVE\B: \h026\bj\Bump, \bpos[r]\B, \brot[r]\B, \bb\Base, \bs\Bystem
 	\bSHIP\B: \h038\bcs\Bpd, \bcac\Bc, \ban\Bim, \bgh\Bost, \bgo\Bdmode, \bdrain\B(\bs\Belf/\bt\Bgt), \bkill\B(\bs\Belf/\bt\Bgt)
 	\bHUD\B: \h043\bn\Btb, \bsho\Bw, \bz\Boom, (\bun\B)\bma\Brk
-	\bPLAYER\B: \bcas\Bh, \bre\Bp, \bshi\Bps, \bmo\Bnkey, \brob\Bot, \btr\Bent, \bcos\Btume
+	\bPLAYER\B: \bcas\Bh, \bre\Bp, \bshi\Bps, \bmo\Bnkey, \brob\Bot, \btr\Bent, \bcos\Btume, \bv\Boice
     \bMISC\B: \h034\bcom\Bmands, \bcoi\Bn, \bdi\Bce, \bpi\Bng, \bpr\Bint/\bsay\B, \bti\Bme, (\bad\Bd)\bcar\Bgo
 
 	Enter \bhe\Blp \i\btopic\B\I  for further help.
@@ -88,6 +88,8 @@ H 1006
 	\brobot\B\h182turn Trent into a robot
 	\btrent\B\h188restore original Trent
 	\bcostume \icharacter\B\I\h041use \icharacter\I  instead of Trent
+	\bvoice\B\h181display the current voice
+	\bvoice \ivoice\B\I\h119use \ivoice\I  instead of trent_voice
 
 	Faction is tested as a nickname first, then as a prefix of the short name; Police factions are simply the initial of the House. \iValue\I  is a number between -1 and 1 \
 	(inclusive); a percentage; or: \bH\B = -0.9; \bh\B = -0.6; \bnh\B = -0.2; \bn\B = 0; \bnf\B = 0.2; \bf\B = 0.6; & \bF\B = 0.9. Costume changes take effect on the next dock, or \

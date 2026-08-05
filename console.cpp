@@ -3680,11 +3680,13 @@ void MarkTarget( bool mark )
   }
 }
 
+
 bool cmdMark( LPCWSTR )
 {
   MarkTarget( true );
   return false;
 }
+
 
 bool cmdUnmark( LPCWSTR )
 {
@@ -3727,6 +3729,39 @@ bool cmdTrent( LPCWSTR )
   pub::Player::SetTrent( player );
 
   msg.strid( IDS(TRENT) );
+  return true;
+}
+
+
+bool cmdVoice( LPCWSTR wvoice )
+{
+  DWORD content	= (DWORD)GetModuleHandle( "content.dll" );
+  if (!content)
+    return false;
+
+  if (!*wvoice)
+  {
+    msg.string( Players.playerdata->voice );
+    return true;
+  }
+
+  char voice[32];
+  wcstombs( voice, wvoice, sizeof(voice) );
+  for (int i = 0; voice[i] != '\0'; ++i)
+    voice[i] = tolower( voice[i] );
+
+  if (!((TGetVoiceProps) (content + 0x106e50))( CreateID( voice ) ))
+  {
+    msg.strid( IDS(VOICE_NOT_FOUND) );
+    return true;
+  }
+
+  strcpy(Players.playerdata->voice, voice);
+  Players.playerdata->voicelen = strlen(voice);
+
+  msg.string( voice );
+  msg.string( L". " );
+  msg.strid( IDS(VOICE_APPLY_CHANGES) );
   return true;
 }
 
@@ -3866,6 +3901,7 @@ struct
   { L"time",     cmdTime     },
   { L"trent",    cmdTrent    },
   { L"unmark",   cmdUnmark   },
+  { L"voice",    cmdVoice   },
   { L"xfer",     cmdXfer     },
   { L"zoom",     cmdZoom     },
 };

@@ -1,5 +1,5 @@
 /*
-  console.cpp - Use chat interface as a command console for single player.
+  console.cpp - Use chat interface as a command console for single-player.
 
   Jason Hood, 20 October to 22 December, 2009.
 
@@ -3733,15 +3733,59 @@ bool cmdTrent( LPCWSTR )
 }
 
 
+PDWORD SearchIdllList(std::list<PDWORD>& idllList, DWORD vftableAddr)
+{
+  std::list<PDWORD>::const_iterator	iter, end = idllList.end();
+  for (iter = idllList.begin(); iter != end; ++iter)
+  {
+    PDWORD idll = *iter;
+    if (idll && *idll == vftableAddr)
+      return idll;
+  }
+  return NULL;
+}
+
+
+bool StoryModeCompleted()
+{
+  #define LAST_MISSION_NUM_V11 (42)
+
+  DWORD server = (DWORD)GetModuleHandle( "server.dll" );
+  DWORD content = (DWORD)GetModuleHandle( "content.dll" );
+  if (!server || !content)
+    return false;
+
+  DWORD storyVftable = content + 0x114274;
+
+  // Find the "Story" IDLL and check if the mission num is high enough.
+  static const DWORD idllListOffsets[] = { 0xaf640, 0xaf634 };
+  for (int i = 0; i < sizeof(idllListOffsets) / sizeof(idllListOffsets[0]); ++i)
+  {
+    std::list<PDWORD>* idllList = (std::list<PDWORD>*)(server + idllListOffsets[i]);
+    PDWORD storyIdll = SearchIdllList(*idllList, storyVftable);
+    if (storyIdll)
+      return storyIdll[4] >= LAST_MISSION_NUM_V11;
+  }
+
+  return false;
+}
+
+
 bool cmdVoice( LPCWSTR wvoice )
 {
+  if (!*wvoice)
+  {
+    msg.string( Players.playerdata->voice );
+    return true;
+  }
+
   DWORD content	= (DWORD)GetModuleHandle( "content.dll" );
   if (!content)
     return false;
 
-  if (!*wvoice)
+  if (!StoryModeCompleted())
   {
-    msg.string( Players.playerdata->voice );
+    msg.strid( IDS(COMPLETE_CAMPAIGN) );
     return true;
   }
 

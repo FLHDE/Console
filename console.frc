@@ -93,7 +93,10 @@ H 1006
 
 	Faction is tested as a nickname first, then as a prefix of the short name; Police factions are simply the initial of the House. \iValue\I  is a number between -1 and 1 \
 	(inclusive); a percentage; or: \bH\B = -0.9; \bh\B = -0.6; \bnh\B = -0.2; \bn\B = 0; \bnf\B = 0.2; \bf\B = 0.6; & \bF\B = 0.9. Costume changes take effect on the next dock, or \
-	just save & load. Female characters will not look right, due to still using the male animations.\.
+	just save & load. Female characters will not look right, due to still using the male animations.
+
+	Using any voice other than trent_voice during the campaign missions may result in missing voice dialogs which in turn can cause softlocks. To prevent such issues, voice changes \
+	will fail if the campaign is not yet completed. This restriction can be bypassed at your own risk by prepending \ivoice\I  with an exclamation mark (!).\.
 
 H 1007
 	\bcommands\B\h204list all available commands

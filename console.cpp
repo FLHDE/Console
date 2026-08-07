@@ -3762,7 +3762,7 @@ bool StoryModeCompleted()
   for (int i = 0; i < sizeof(idllListOffsets) / sizeof(idllListOffsets[0]); ++i)
   {
     std::list<PDWORD>* idllList = (std::list<PDWORD>*)(server + idllListOffsets[i]);
-    PDWORD storyIdll = SearchIdllList(*idllList, storyVftable);
+    PDWORD storyIdll = SearchIdllList( *idllList, storyVftable );
     if (storyIdll)
       return storyIdll[4] >= LAST_MISSION_NUM_V11;
   }
@@ -3783,7 +3783,15 @@ bool cmdVoice( LPCWSTR wvoice )
   if (!content)
     return false;
 
-  if (!StoryModeCompleted())
+  bool force = false;
+  bool story_completed = StoryModeCompleted();
+  if (*wvoice == '!')
+  {
+    force = true;
+    ++wvoice;
+  }
+
+  if (!force && !story_completed)
   {
     msg.strid( IDS(COMPLETE_CAMPAIGN) );
     return true;
@@ -3800,12 +3808,17 @@ bool cmdVoice( LPCWSTR wvoice )
     return true;
   }
 
-  strcpy(Players.playerdata->voice, voice);
-  Players.playerdata->voicelen = strlen(voice);
+  strcpy( Players.playerdata->voice, voice );
+  Players.playerdata->voicelen = strlen( voice );
 
   msg.string( voice );
   msg.string( L". " );
   msg.strid( IDS(VOICE_APPLY_CHANGES) );
+  if (force && !story_completed)
+  {
+    msg.para();
+    msg.strid( IDS(VOICE_WARNING) );
+  }
   return true;
 }
 

@@ -97,7 +97,8 @@ IDS_LOADOUT_SHIP_CONJ,	" and %s."
 
 IDS_VOICE_NOT_FOUND,	"Voice not found."
 IDS_VOICE_APPLY_CHANGES, "Save game and reload to apply changes."
-IDS_COMPLETE_CAMPAIGN, "Complete single-player campaign."
+IDS_COMPLETE_CAMPAIGN, "Complete single-player campaign. See “help player” for more information."
+IDS_VOICE_WARNING, " Beware of possible softlocks and missing voice dialogs during the campaign missions."
 
 }
 

@@ -3717,9 +3717,11 @@ bool cmdTime( LPCWSTR )
 {
   SYSTEMTIME lt;
   GetLocalTime( &lt );
-  msg.printf( L"%u-%02u-%02u %02u:%02u:%02u",
-    (DWORD)lt.wYear, (DWORD)lt.wMonth,  (DWORD)lt.wDay,
+  msg.printf( L"%02u:%02u:%02u",
     (DWORD)lt.wHour, (DWORD)lt.wMinute, (DWORD)lt.wSecond );
+  msg.para();
+  msg.printf( L"%u-%02u-%02u",
+    (DWORD)lt.wYear, (DWORD)lt.wMonth,  (DWORD)lt.wDay );
   return true;
 }
 

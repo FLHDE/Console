@@ -104,7 +104,7 @@ H 1007
     \bdice\B\h275roll a dice
     \bping\B\h274measure the network latency (not really)
     \bprint/say \itext\B\I\h182output \itext\I  to the chat
-	\btime\B\h274display the current time
+	\btime\B\h274display the current time and date
 	\b(add)cargo \icargo \I [\iquantity \I]\B\h020add \icargo\I  to cargo hold
 	
 	Do not add too many unique items to the cargo hold as this can corrupt the save file.

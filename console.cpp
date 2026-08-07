@@ -3791,30 +3791,33 @@ bool cmdVoice( LPCWSTR wvoice )
     ++wvoice;
   }
 
-  if (!force && !story_completed)
-  {
-    msg.strid( IDS(COMPLETE_CAMPAIGN) );
-    return true;
-  }
-
   char voice[32];
   wcstombs( voice, wvoice, sizeof(voice) );
   for (int i = 0; voice[i] != '\0'; ++i)
     voice[i] = tolower( voice[i] );
 
-  if (!((TGetVoiceProps) (content + 0x106e50))( CreateID( voice ) ))
+  UINT voice_id = CreateID( voice );
+  bool trent_voice = voice_id == 2513602688; // CreateID( "trent_voice" )
+  if (!((TGetVoiceProps)(content + 0x106e50))( voice_id ))
   {
     msg.strid( IDS(VOICE_NOT_FOUND) );
     return true;
   }
 
+  if (!trent_voice && !force && !story_completed)
+  {
+    msg.strid( IDS(COMPLETE_CAMPAIGN) );
+    return true;
+  }
+
+  //bool same_voice = stricmp( Players.playerdata->voice, voice ) == 0;
   strcpy( Players.playerdata->voice, voice );
   Players.playerdata->voicelen = strlen( voice );
 
   msg.string( voice );
   msg.string( L". " );
-  msg.strid( IDS(VOICE_APPLY_CHANGES) );
-  if (force && !story_completed)
+  /*(!same_voice) */msg.strid( IDS(VOICE_APPLY_CHANGES) );
+  if (!trent_voice && !story_completed)
   {
     msg.para();
     msg.strid( IDS(VOICE_WARNING) );

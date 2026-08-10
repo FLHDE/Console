@@ -3786,7 +3786,6 @@ bool cmdVoice( LPCWSTR wvoice )
     return false;
 
   bool force = false;
-  bool story_completed = StoryModeCompleted();
   if (*wvoice == '!')
   {
     force = true;
@@ -3799,13 +3798,14 @@ bool cmdVoice( LPCWSTR wvoice )
     voice[i] = tolower( voice[i] );
 
   UINT voice_id = CreateID( voice );
-  bool trent_voice = voice_id == 2513602688; // CreateID( "trent_voice" )
   if (!((TGetVoiceProps)(content + 0x106e50))( voice_id ))
   {
     msg.strid( IDS(VOICE_NOT_FOUND) );
     return true;
   }
 
+  bool trent_voice = voice_id == 2513602688; // CreateID( "trent_voice" )
+  bool story_completed = StoryModeCompleted();
   if (!trent_voice && !force && !story_completed)
   {
     msg.strid( IDS(COMPLETE_CAMPAIGN) );
@@ -3818,7 +3818,7 @@ bool cmdVoice( LPCWSTR wvoice )
 
   msg.string( voice );
   msg.string( L". " );
-  /*(!same_voice) */msg.strid( IDS(VOICE_APPLY_CHANGES) );
+  /*if (!same_voice) */msg.strid( IDS(VOICE_APPLY_CHANGES) );
   if (!trent_voice && !story_completed)
   {
     msg.para();

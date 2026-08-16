@@ -2931,7 +2931,7 @@ MArch ship_archetypes;
 
 void FASTCALL parse_loadout_archetype( INI_Reader& ini, const PUINT loadout_info, LPCSTR value )
 {
-  if (ini.is_value(value))
+  if (ini.is_value( value ))
   {
     if (loadout_info && loadout_info[4])
       ship_archetypes[loadout_info[4]] = CreateID( ini.get_value_string() );

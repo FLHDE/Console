@@ -2,10 +2,10 @@
 # Jason Hood, 20 October, 2009 (updated 6 October, 2013).
 
 FLEXE = \games\Freelancer\EXE
-CPPFLAGS = /nologo /W3 /GX /O2 /MD /LD
+CPPFLAGS = /nologo /W3 /GX /O2 /MD /LD /DNDEBUG
 
 console.dll: console.obj binaryrdl.obj console.res console.frc common.lib dalib.lib server.lib
-	cl $(CPPFLAGS) console.obj binaryrdl.obj console.res user32.lib /link /filealign:512 /base:0x6110000 /fixed
+	cl $(CPPFLAGS) console.obj binaryrdl.obj console.res user32.lib /link /filealign:512 /base:0x6110000 /fixed /release
     frc console.frc $@
 
 common.lib: common.def

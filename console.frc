@@ -97,7 +97,7 @@ H 1006
 
 	Using any voice other than trent_voice during the campaign missions may result in missing voice dialogs which in turn can cause softlocks. To prevent such issues, voice changes \
 	will fail if the campaign is not yet completed. This restriction can be bypassed at your own risk by prepending \ivoice\I  with an exclamation mark (!). Additionally, note that \
-	custom voices may cause Trent to be inaudible during base cutscenes\.
+	custom voices may cause Trent to be inaudible during base cutscenes.\.
 
 H 1007
 	\bcommands\B\h204list all available commands

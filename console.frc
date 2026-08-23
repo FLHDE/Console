@@ -7,105 +7,112 @@ H 1000
 	\bPLAYER\B: \bcas\Bh, \bre\Bp, \bshi\Bps, \bmo\Bnkey, \brob\Bot, \btr\Bent, \bcos\Btume, \bv\Boice
     \bMISC\B: \h034\bcom\Bmands, \bcoi\Bn, \bdi\Bce, \bpi\Bng, \bpr\Bint/\bsay\B, \bti\Bme, (\bad\Bd)\bcar\Bgo
 
-	Enter \bhe\Blp \i\btopic\B\I  for further help.
+	Gib \bhe\Blp \i\btopic\B\I  ein, um weitere Hilfe zu erhalten.
 
-	Commands (and their options) can be abbreviated to a unique prefix. Case is ignored, unless otherwise stated. Commands that search for names will stop at the first match found; \
-	append \b*\B, \b**\B or \b*\iN\B\I  to stop at the second, third or \iN \Ith match.\.
+	Commands (und deren Optionen) können zu einen jeweils-einzigartigen Prefix (Wortanfang) abgekürzt werden. Groß-/Kleinschreibung wird (wenn nicht anders erwähnt) ignoriert. \
+	Namen, die als Argument in einem Command benutzt werden, verwenden die erste valide Übereinstimmung am Wortanfang, die gefunden wird; \
+	falls nötig, füge \b*\B, \b**\B or \b*\iN\B\I  hinzu, um die zweite, dritte oder \iN \I-te Übereinstimmung zu verwenden.\.
 
 H 1001
-	\bautosave\B\h103save the Auto Save game
-	\bautoload\B\h109load the Auto Save game
-	\bsave [\islot \I|\idesc \I]\B\h020save the game
-	\bload [\islot \I|\idesc \I]\B\h026load a game
-	\bplay \isound \I [\iutf \I]\B\h023play a sound effect
+	\bautosave\B\h103Macht einen Auto-Save
+	\bautoload\B\h109Lädt letzten Auto-Save
+	\bsave [\islot \I|\idesc \I]\B\h020Speichert das Spiel
+	\bload [\islot \I|\idesc \I]\B\h026Lädt einen Speicherstand
+	\bplay \isound \I [\iutf \I]\B\h023Spielt gewählten Sound-Effekt ab
 
-	Only \bsave\Bd games can be \bload\Bed. Slot is a single character and will be listed as "Quick Save \islot\I "; it is converted to upper case and appended to the file name, so \
-	not all characters are available. Described games will be listed with a leading space. Games are automatically overwritten.\.
+	Nur die mit \bsave\B gespeicherten Spielstände können mit \bload\B geladen werden. “Slot” bezieht sich auf ein einzelnes Schriftzeichen und wird als "Quick Save \islot\I " \
+	gelistet; Es wird als Großbuchstabe automatisch an den Dateinamen angefügt, das heißt nicht alle Schiftzeichen sind erlaubt. Beschriebene Speicherstände werden mit vorangehendem \
+	Leerzeichen aufgelistet. Speicherstände werden automatisch überschieben.\.
 
 H 1002
-	\blaunch\B\h188enter space
-	\bpark\B\h211place the ship in storage
-	\bdrive [\iship \I]\B\h135get a ship out of storage
-	\bxfer [\iship \I]\B\h146transfer equipment and commodities
-	\bsell [\iship \I]\B\h151sell a ship in storage
-	\bhitch [\ibase \I]\B\h128hitch a ride
-	\bsetship \iloadout \I [\iship \I]\B\h020set the current ship
+	\blaunch\B\h188Dockt sofort ins All ab
+	\bpark\B\h211Parkt das aktuelle Schiff im Fuhrpark
+	\bdrive [\iship \I]\B\h135Wechselt zu einem Schiff aus dem Fuhrpark
+	\bxfer [\iship \I]\B\h146Überträgt Ausrüstung und Waren
+	\bsell [\iship \I]\B\h151Verkauft ein Schiff im Fuhrpark
+	\bhitch [\ibase \I]\B\h128Bringt den Spieler auf eine andere Basis, ohne sein Schiff mitzunehmen
+	\bsetship \iloadout \I [\iship \I]\B\h020Überschreibt das aktuelle Loadout inclusive dazugehörigem Schiff [oder spezifizierten Schiff]
 
-	\iShip  \Iis tested as a prefix of the name. It is optional (except for \bsell\B) if there is only one ship stored on the base, otherwise the ships will be listed. \iBase  \Imay \
-	only be omitted if you have ships stored on one other base.\.
+	\iShip  \Iwird per Wortanfang der Schiffsnamen erkannt. It is optional (außer bei \bsell\B) falls nur ein eizelnes Schiff auf der Basis im Fuhrpark steht, ansonsten werden \
+	alle Schiffe aufgelistet. \iBase  \Idarf NUR dann ausgelassen werden, wenn Schiffe im Fuhrpark nur auf EINER weiteren Basis stehen.\.
 
 H 1003
-	\bjump \iz, x, y\B\I\h147move forwards/backwards, right/left, up/down
-	\bjump [\iobject\I ]\B\h127move to the (targeted) object
-	\bpos [=]\in\I\B\h182set or move to a bookmark
-	\bpos =\B\h209list bookmarks
-	\bpos copy|clip\B\h131use the clipboard to store/set position
-	\bpos[r] [\ix, y, z\I [\i, p, y, r \I]]\B\h020display/set (relative) position (and rotation)
-	\brot[r] [\ip, y, r \I]\B\h129display/set (relative) rotation
-	\bbase\B\h217display base’s nickname or previous base’s name
-	\bbase \ibase \B\I\h152go to a base
+	\bjump \iz, x, y\B\I\h147Teleportiere um ±z vorwärts/rückwärts, ±x rechts/links, und ±y aufwärts/abwärts
+	\bjump [\iobject\I ]\B\h127Teleportiere zum angewählten [oder benannten] Objekt im System
+	\bpos [=]\in\I\B\h182Setze die aktuelle Position als Lesezeichen oder teleportiere zu einem bereits gesetzten Lesezeichen
+	\bpos =\B\h209Liste alle gesetzten Lesezeichen auf
+	\bpos copy|clip\B\h131Kopiere die Koordinaten der aktuellen Position ins Clipboard des Computers, oder teleportiere zu den im Clipboard gespeicherten Koordinaten
+	\bpos[r] [\ix, y, z\I [\i, p, y, r \I]]\B\h020Zeige die aktuelle [relative] Position [und Rotation] an, oder überschreibe sie mit den gegebenen Werten
+	\brot[r] [\ip, y, r \I]\B\h129Zeige die aktuelle [relative] Rotation an oder überschreibe sie
+	\bbase\B\h217Zeige den internen Namen (nickname) der aktuellen Basis an oder den Namen der letzten besuchten Basis
+	\bbase \ibase \B\I\h152Docke sofort auf die angegebenen Basis
 	\bsystem [\isystem \I [\iobject\I | \ipos \I[, \irot\I ]]]\B
-	\h270jump to a system or display current system’s nickname
+	\h270Springe in das angegebene System oder zeige den internen Namen (nickname) des aktuellen Systems an
 
-	Numbers may be suffixed with \bk\B or \bK\B to multiply by 1000. Individual numbers are optional, defaulting to the current value or \b0\B, as appropriate. There are ten \
-	bookmarks, \b1\B to \b9\B, with \b0\B set automatically, prior to any movement. The object, base or system is tested as a nickname first, then as a case sensitive substring of \
-	the name (prefix \iobject  \Iwith \b~\B to test nickname). The object must be in the current system. \iSystem  \Imay be \b.\B for the current system; as may \ibase  \Ifor the \
-	current or previous (via this command) base.\.
+	Zahlen, denen der Buchstabe \bk\B/\bK\B angehängt ist, werden als Vielfache von 1000 verstanden. Komponenten, die ausgelassen wurden, werden passgemäß entweder mit dem aktuellen \
+	Wert oder \b0\B angenommen. Es gibt zehn Lesezeichen, \b1\B bis \b9\B, wobei \b0\B automatisch auf die Position des Spielers beim Betreten des Alls gesetzt wird. \
+	Benannte Objekte, Basen oder Systeme werden präferenziell über den nickname gefunden, ansonsten als Teil des Namens (Groß-/Kleinschreibung relevant!). Das Zeichen \b~\B am \
+	Namensanfang von \iobject  \I lässt spezifizieren, dass es sich dabei exclusiv um einen nickname handeln soll. Das Zeichen \b.\B kann stellvertretend für das \
+	aktuelle System bei \isystem  \I oder die aktuelle/zuletzt besuchte Basis bei \ibase  \Iverwendet werden.\.
 
 H 1004
-	\bcspd [\ispeed \I]\B\h129display/set cruise speed
-	\bcacc [\itime \I]\B\h150display/set time to reach cruise speed
-	\banim [[>|<]wings|\iscript \I]\B\h020perform an animation
-	\bghost\B\h213toggle collision detection
-	\bgodmode\B\h174toggle invincibility
-    \bdrainself\B\h182drain your shield
-    \bdraintgt\B\h192drain the targeted object’s shield
-    \bkillself\B\h207destroy your ship
-    \bkilltgt\B\h217destroy the targeted ship
+	\bcspd [\ispeed \I]\B\h129Zeige Reisefluggeschwindigkeit an oder ändere sie
+	\bcacc [\itime \I]\B\h150Zeige die Zeit zur vollen Reisefluggeschwindigkeit an oder ändere sie
+	\banim [[>|<]wings|\iscript \I]\B\h020Spielt [angegebene] Animation des Schiffs ab
+	\bghost\B\h213Schalte Kollision des Spielerschiffes aus/ein
+	\bgodmode\B\h174Schalte Unverwundbarkeit ein/aus
+    \bdrainself\B\h182Entlade dein Schild
+    \bdraintgt\B\h192Entlade das Shield des ausgewählten Zielobjekts
+    \bkillself\B\h207Sofortige Selbstzerstörung
+    \bkilltgt\B\h217Zerstört das ausgewählte Schiff
 
-	Setting a high cruise speed may require loading a game (in order to also recognize the new maximum speed). \bCspd\B will not work with MultiCruise. The default animation \
-	opens/closes the bay doors; \bwings\B is short for \bSc_extend wing\B. The first \banim\B command runs forwards, the second reverses; use \b>\B to explicitly run forwards and \b<\
-	\B for backwards. \bGodmode\B takes effect on the next load.\.
+	Es kann nötig sein, den Spielstand zu laden, um eine erhöhte Reisefluggeschwindigkeit wirksam zu machen. \bCspd\B funktioniert nicht mit dem MultiCruise-Plugin. Die Standard- \
+	animation, die \banim\B abspielt, öffnet und schließt die Klappen des Frachtraums; \bwings\B ist Kürzel für die Animation \bSc_extend wing\B. Jede erste Ausführung des \
+	\banim\B-Commands läuft die Animation vorwärts ab, die nächste rückwärts; Mit \b>\B kann explizit Vorwärts- und mit \b<\B Rückwärts-Ablauf erzwungen werden. \bGodmode\B wird erst \
+	beim nächsten Laden eines Spielstands wirksam.\.
 
 H 1005
-	\bntb [on|off|sight]\B\h020choose display of \un\Uon-\ut\Uargeted \ub\Urackets
-	\bshow\B\h136toggles display of everything on the Nav Map
-	\bshow houses\B\h053toggles display of the House labels on the Universe Map
-	\bshow paths\B\h071toggles filtering of patrol paths on the Nav Map
-	\bzoom [\itime \I]\B\h062display/set time to zoom Nav Map
-    (\bun\B)\bmark\B\h099(un)mark the targeted object
+	\bntb [on|off|sight]\B\h020"No Target Brackets" zeigt oder versteckt die Zielklammern
+	\bshow\B\h136Schaltet die gesamte Nav-Karte und Kontaktliste aller Systeme sichtbar/zurück
+	\bshow houses\B\h053Schaltet die Label der Houses (Kolonien) auf der Karte des Universums aus/an
+	\bshow paths\B\h071Schaltet Sichtbarkeit der Patrouillenrouten auf der Nav-Karte aus/an
+	\bzoom [\itime \I]\B\h062Zeigt die Verzögerung beim Zooming auf der Nav-Karte an oder ändert sie
+    (\bun\B)\bmark\B\h099Markiert (oder ent-markiert) des ausgewählte Zielobjekt
 
-	Sight will show the brackets when the mouse moves over the ship. Whilst bases will be shown on the Nav Map (and Contact List), it is still necessary to actually visit them to \
-	obtain their info.\.
+	Die \bntb\B-Option \isight  \I lässt die Zielklammern anzeigen, während sich der Cursor über dem Ziel befindet. \bShow\B deckt nur die Nav-Karten-Informationen von Basen auf; Um die \
+	vollständigen Informationen einer Basis auf ihrer Infocard zu sehen, muss sie trotzdem besucht werden.\.
 
 H 1006
-	\bcash [[+|-]\iamount \I]\B\h037display/set (relative) amount of money
-	\brep \ifaction \I[\ivalue \I]\B\h041display/set reputation with \ifaction\I
-	\brep = [\ifaction \I|\ivalue\I]\B\h020set reputation for all factions
-	\brep undo\B\h143restore reputation prior to first use of \b=\B
-	\bships\B\h181list all your stored ships
-	\bmonkey\B\h154give Trent a monkey’s head
-	\brobot\B\h182turn Trent into a robot
-	\btrent\B\h188restore original Trent
-	\bcostume \icharacter\B\I\h041use \icharacter\I  instead of Trent
-	\bvoice\B\h181display the current voice
-	\bvoice \ivoice\B\I\h119use \ivoice\I  instead of trent_voice
+	\bcash [[+|-]\iamount \I]\B\h037Zeige oder ändere den (relativen) Kontostand
+	\brep \ifaction \I[\ivalue \I]\B\h041Zeige oder ändere den genauen Ansehenswert bei \ifaction\I
+	\brep = [\ifaction \I|\ivalue\I]\B\h020Überschreibe den Ansehenswert für ALLE Gruppierungen
+	\brep undo\B\h143Setze die Ansehenstabelle zurück auf den Stand vor der ersten Benutzung von \b=\B
+	\bships\B\h181Liste alle Schiffe im Fuhrpark auf
+	\bmonkey\B\h154Setze Trent den Kopf eines Primaten auf
+	\brobot\B\h182Verwandle Trent in einen Roboter
+	\btrent\B\h188Kehre zu Trent’s gewohntem Aussehen zurück
+	\bcostume \icharacter\B\I\h041Spiele mit dem Aussehen von \icharacter\I  anstelle von Trent
+	\bvoice\B\h181Zeige die aktuelle Stimme ("voice") von Trent an
+	\bvoice \ivoice\B\I\h119Ändere Trent’s Stimme zu \ivoice\I  anstelle von trent_voice
 
-	Faction is tested as a nickname first, then as a prefix of the short name; Police factions are simply the initial of the House. \iValue\I  is a number between -1 and 1 \
-	(inclusive); a percentage; or: \bH\B = -0.9; \bh\B = -0.6; \bnh\B = -0.2; \bn\B = 0; \bnf\B = 0.2; \bf\B = 0.6; & \bF\B = 0.9. Costume changes take effect on the next dock, or \
-	just save & load. Female characters will not look right, due to still using the male animations.
+	\iFaction\I  wird präferenziell über den internen Namen (nickname) gefunden, ansonsten als Teil des Wortanfangs des Kurznamens der Gruppierung (short name); für jene mit identischem \
+	Kurznamen "Polizei" reichen einfach die Inertialen des jeweiligen Houses (Kolonie). \iValue\I  erwartet eine Zahl zwischen (einschließlich) -1 and 1; einen Prozentwert; oder die \
+	Buchstabenkürzel mit den folgenden, assoziierten Werten: \bH\B = -0.9; \bh\B = -0.6; \bnh\B = -0.2; \bn\B = 0; \bnf\B = 0.2; \bf\B = 0.6; & \bF\B = 0.9. \
+	Änderungen des Aussehens der Spielerfigur werden erst beim nächsten Andocken oder nach Speichern und Laden des Spielstands wirksam. Weibliche Charactere sind für andere Animationen \
+	als die der Spielerfigur ausgelegt und sehen dadurch womöglich etwas seltsam aus.
 
-	Using any voice other than trent_voice during the campaign missions may result in missing voice dialogs which in turn can cause softlocks. To prevent such issues, voice changes \
-	will fail if the campaign is not yet completed. This restriction can be bypassed at your own risk by prepending \ivoice\I  with an exclamation mark (!). Additionally, note that \
-	custom voices may cause Trent to be inaudible during base cutscenes.\.
+	Das Benutzen von anderen Stimmen (voice) als "trent_voice" kann während Story-Missionen der Singleplayer-Kampagne zu fehlenden Dialogen führen, was wiederum Soft-Locks auslösen \
+	kann. Um diese Probleme zu verhindern, wird der \bvoice\B-Command standardmäßig erst nach Ende der Kampagne akzeptiert. Diese Einschränkung kann auf eigene Gefahr umgangen werden, \
+	indem der \ivoice\I im Argument bündig ein Ausrufezeichen \b!\B vorangestellt wird. Außerdem fehlen Trent mit einer alternativen Stimme womöglich die Worte bei Unterhaltungen mit \
+	NPCs in der Bar.
 
 H 1007
-	\bcommands\B\h204list all available commands
-    \bcoin\B\h276flip a coin
-    \bdice\B\h275roll a dice
-    \bping\B\h274measure the network latency (not really)
-    \bprint/say \itext\B\I\h182output \itext\I  to the chat
-	\btime\B\h274display the current time and date
-	\b(add)cargo \icargo \I [\iquantity \I]\B\h020add \icargo\I  to cargo hold
+	\bcommands\B\h204Liste alle verfügbaren Commands auf
+    \bcoin\B\h276Werfe eine Münze
+    \bdice\B\h275Werfe einen 6-seitigen Würfel
+    \bping\B\h274Ermittle die Netzwerk-Latenz (ungenau)
+    \bprint/say \itext\B\I\h182Sende \itext\I  in den Chat
+	\btime\B\h274Zeige die aktuelle Uhrzeit und Datum an
+	\b(add)cargo \icargo \I [\iquantity \I]\B\h020Lädt \icargo\I  in den Frachtraum
 	
-	Do not add too many unique items to the cargo hold as this can corrupt the save file.
+	Lade nicht zu viele verschiedene Items auf dein Schiff, da der Spielstand dadurch für Freelancer unleserlich werden kann.
